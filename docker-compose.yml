@@ -26,7 +26,7 @@ services:
       - TZ=Asia/Shanghai
     privileged: true
     ports: # 设置端口映射
-      - "9300:9300"  # 课件服务rpc端口
+      - "8080:8080"  # 服务rpc端口
     stdin_open: true                     # 打开标准输入，可以接受外部输入
     tty: true
     networks:
@@ -41,7 +41,7 @@ services:
       - TZ=Asia/Shanghai
     privileged: true
     ports: # 设置端口映射
-      - "8888:8888"  # 课件服务api端口
+      - "8888:8888"  # 服务api端口
     stdin_open: true                     # 打开标准输入，可以接受外部输入
     tty: true
     networks:

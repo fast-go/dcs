@@ -7,6 +7,7 @@ import (
 	"dcs/rpc/user/user"
 	"fmt"
 	"github.com/zeromicro/go-zero/core/logx"
+	"os"
 )
 
 import _ "github.com/dtm-labs/driver-gozero"
@@ -36,7 +37,7 @@ func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
 
 	return &user.UserInfoReply{
 		Id:     in.GetId(),
-		Name:   fmt.Sprintf("jack:ip:%s", ip),
+		Name:   fmt.Sprintf("jack:ip:%s,TZ = %s", ip, os.Getenv("TZ")),
 		Number: "",
 		Gender: "woman",
 	}, nil

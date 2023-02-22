@@ -37,6 +37,12 @@ ENTRYPOINT  ["./user", "-f", "etc/user.yaml"]
 ```
 
 通过容器编排工具 ```docker-compose``` 启动docker镜像
-``
+
+```
 docker-compose up -d
-``
+```
+
+如果需要重新构建只需要加上 ```--force-recreate --build```参数
+```
+docker-compose up -d --force-recreate --build
+```
