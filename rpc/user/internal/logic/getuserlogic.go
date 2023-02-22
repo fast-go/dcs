@@ -1,0 +1,43 @@
+package logic
+
+import (
+	"context"
+	"dcs/common"
+	"dcs/rpc/user/internal/svc"
+	"dcs/rpc/user/user"
+	"fmt"
+	"github.com/zeromicro/go-zero/core/logx"
+)
+
+import _ "github.com/dtm-labs/driver-gozero"
+
+type GetUserLogic struct {
+	ctx    context.Context
+	svcCtx *svc.ServiceContext
+	logx.Logger
+}
+
+func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLogic {
+	return &GetUserLogic{
+		ctx:    ctx,
+		svcCtx: svcCtx,
+		Logger: logx.WithContext(ctx),
+	}
+}
+
+func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
+	// todo: add your logic here and delete this line
+	//获取Id,查询数据库获取用户信息
+
+	var ip string
+	if localIp, err := common.GetLocalIP(); err == nil && len(localIp) > 0 {
+		ip = localIp[0]
+	}
+
+	return &user.UserInfoReply{
+		Id:     in.GetId(),
+		Name:   fmt.Sprintf("jack:ip:%s", ip),
+		Number: "",
+		Gender: "woman",
+	}, nil
+}

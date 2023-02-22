@@ -1,0 +1,11 @@
+Name: frontend-api
+Host: 0.0.0.0
+Port: 8888
+Auth:
+  AccessSecret: "11111111"
+  AccessExpire: 7200
+UserRpc:
+  Etcd:
+    Hosts:
+      - etcd:2379
+    Key: user.rpc

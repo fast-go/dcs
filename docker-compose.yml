@@ -1,0 +1,49 @@
+version: '3.5'
+# 网络配置
+networks:
+  backend:
+    driver: bridge
+
+# 服务容器配置
+services:
+  etcd:                                  # 自定义容器名称
+    build:
+      dockerfile: rely/etcd/Dockerfile
+    environment:
+      - TZ=Asia/Shanghai
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+    ports:                               # 设置端口映射
+      - "2379:2379"
+    networks:
+      - backend
+    restart: always
+
+  user-rpc: # 自定义容器名称
+    build:
+      dockerfile: rpc/user/Dockerfile
+    environment: # 设置环境变量
+      - TZ=Asia/Shanghai
+    privileged: true
+    ports: # 设置端口映射
+      - "9300:9300"  # 课件服务rpc端口
+    stdin_open: true                     # 打开标准输入，可以接受外部输入
+    tty: true
+    networks:
+      - backend
+    restart: always                      # 指定容器退出后的重启策略为始终重启
+
+  frontend-api: # 自定义容器名称
+    build:
+#      context: frontend-api                  # 指定构建使用的 Dockerfile 文件
+      dockerfile: api/frontend/Dockerfile
+    environment: # 设置环境变量
+      - TZ=Asia/Shanghai
+    privileged: true
+    ports: # 设置端口映射
+      - "8888:8888"  # 课件服务api端口
+    stdin_open: true                     # 打开标准输入，可以接受外部输入
+    tty: true
+    networks:
+      - backend
+    restart: always

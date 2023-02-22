@@ -1,0 +1,1 @@
+goctl rpc protoc user.proto --go_out=../rpc/user --go-grpc_out=../rpc/user --zrpc_out=../rpc/user

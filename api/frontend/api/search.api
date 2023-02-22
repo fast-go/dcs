@@ -1,0 +1,31 @@
+type (
+    SearchReq {
+        // 图书名称
+        Name string `form:"name"`
+    }
+
+    SearchReply {
+        Name string `json:"name"`
+        Count int `json:"count"`
+    }
+)
+
+@server(
+    jwt: Auth
+    group: search
+)
+
+service frontend-api {
+    @handler search
+    get /search/do (SearchReq) returns (SearchReply)
+}
+
+
+@server(
+    group: search
+)
+
+service frontend-api {
+    @handler ping
+    get /search/ping
+}

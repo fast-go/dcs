@@ -1,0 +1,1 @@
+goctl api plugin -p goctl-go-compact -api frontend.api -dir .
