@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"dcs/rpc/consumer/internal/config"
-	"dcs/rpc/consumer/internal/server/queue"
+	"dcs/rpc/producer/internal/config"
+	"dcs/rpc/producer/internal/server/queue"
 )
 
 type ServiceContext struct {

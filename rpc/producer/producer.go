@@ -1,14 +1,13 @@
 package main
 
 import (
-	"dcs/rpc/consumer/internal/topic"
 	"flag"
 	"fmt"
 
-	"dcs/rpc/consumer/consumer"
-	"dcs/rpc/consumer/internal/config"
-	"dcs/rpc/consumer/internal/server"
-	"dcs/rpc/consumer/internal/svc"
+	"dcs/rpc/producer/internal/config"
+	"dcs/rpc/producer/internal/server"
+	"dcs/rpc/producer/internal/svc"
+	"dcs/rpc/producer/producer"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
@@ -17,7 +16,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var configFile = flag.String("f", "etc/consumer.yaml", "the config file")
+var configFile = flag.String("f", "etc/producer.yaml", "the config file")
 
 func main() {
 	flag.Parse()
@@ -26,15 +25,8 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)
 
-	ctx.QueueAmqp.StartConsume(
-		topic.NewLoginTopic(ctx),
-		topic.NewRegisterTopic(ctx),
-	)
-
-	defer ctx.Close()
-
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
-		consumer.RegisterConsumerServer(grpcServer, server.NewConsumerServer(ctx))
+		producer.RegisterProducerServer(grpcServer, server.NewProducerServer(ctx))
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {
 			reflection.Register(grpcServer)

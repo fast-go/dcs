@@ -12,5 +12,6 @@ type Config struct {
 		AccessExpire int64
 	}
 
-	UserRpc zrpc.RpcClientConf
+	UserRpc     zrpc.RpcClientConf
+	ProducerRpc zrpc.RpcClientConf
 }

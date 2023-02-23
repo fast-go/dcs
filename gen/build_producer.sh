@@ -1,0 +1,1 @@
+goctl rpc protoc producer.proto --go_out=../rpc/producer --go-grpc_out=../rpc/producer --zrpc_out=../rpc/producer

@@ -1,0 +1,9 @@
+Name: producer.rpc
+ListenOn: 0.0.0.0:8085
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: producer.rpc
+
+Amqp:
+  Host: amqp://guest:guest@localhost:5672/

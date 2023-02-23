@@ -46,3 +46,17 @@ docker-compose up -d
 ```
 docker-compose up -d --force-recreate --build
 ```
+
+
+goctl生成k8s脚本文件
+
+```
+
+[//]: # (goctl kube deploy --name greet --image greet:v1 --namespace default --port 8888 -nodePort 8888 --nodePort 32000 -0 greet.yam)
+```
+
+运行 rabbitmq
+
+```
+docker run -id --hostname myrabbit --name rabbitmq1 -p 15672:15672 -p 5672:5672 rabbitmq
+```

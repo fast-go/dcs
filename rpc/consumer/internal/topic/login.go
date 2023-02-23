@@ -8,23 +8,23 @@ import (
 	"log"
 )
 
-type RegisterTopic struct {
+type LoginTopic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 
 	topicId string
 }
 
-func NewRegisterTopic(svcCtx *svc.ServiceContext) *RegisterTopic {
+func NewLoginTopic(svcCtx *svc.ServiceContext) *LoginTopic {
 	topicId, _ := uuid.GenerateUUID()
-	return &RegisterTopic{
+	return &LoginTopic{
 		svcCtx:  svcCtx,
 		topicId: topicId,
 	}
 }
 
-func (r *RegisterTopic) TopicName() string { return define.RegisterTopic }
-func (r *RegisterTopic) Consume(body []byte) {
+func (r *LoginTopic) TopicName() string { return define.LoginTopic }
+func (r *LoginTopic) Consume(body []byte) {
 	//todo 处理具体要执行的事件
 	log.Printf("[%s:%s] Received a message: %s", r.TopicName(), r.topicId, body)
 }

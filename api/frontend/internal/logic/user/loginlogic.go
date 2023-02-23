@@ -3,7 +3,10 @@ package user
 import (
 	"context"
 	"dcs/common"
+	"dcs/common/define"
+	"dcs/rpc/producer/producer"
 	"errors"
+	"fmt"
 	"strings"
 	"time"
 
@@ -63,6 +66,16 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginReply, err err
 		return nil, err
 	}
 	// ---end---
+
+	//登录成功发送事件到消息队列中
+	_, err = l.svcCtx.ProducerRpc.Publish(l.ctx, &producer.Request{
+		Topic: define.LoginTopic,
+		Body:  []byte(`{"a":"b"}`),
+	})
+
+	if err != nil {
+		fmt.Printf("l.svcCtx.ProducerRpc.Publish err:%s", err)
+	}
 
 	return &types.LoginReply{
 		Id:           userInfo.Id,
