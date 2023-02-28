@@ -9,3 +9,9 @@ UserRpc:
     Hosts:
       - etcd:2379
     Key: user.rpc
+ProducerRpc:
+  Etcd:
+    Hosts:
+      - etcd:2379
+    Key: producer.rpc
+  NonBlock: true

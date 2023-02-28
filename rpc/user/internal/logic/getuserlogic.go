@@ -29,15 +29,16 @@ func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLo
 func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
 	// todo: add your logic here and delete this line
 	//获取Id,查询数据库获取用户信息
-
 	var ip string
 	if localIp, err := common.GetLocalIP(); err == nil && len(localIp) > 0 {
 		ip = localIp[0]
 	}
 
+	u := l.svcCtx.Dao.User.FindOneById(in.Id)
+
 	return &user.UserInfoReply{
 		Id:     in.GetId(),
-		Name:   fmt.Sprintf("jack:ip:%s,TZ = %s", ip, os.Getenv("TZ")),
+		Name:   fmt.Sprintf("username %s:ip:%s,TZ = %s", u.Username, ip, os.Getenv("TZ")),
 		Number: "",
 		Gender: "woman",
 	}, nil

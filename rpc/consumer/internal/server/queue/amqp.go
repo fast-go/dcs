@@ -4,6 +4,7 @@ import (
 	"dcs/rpc/consumer/internal/config"
 	"fmt"
 	"github.com/streadway/amqp"
+	"log"
 )
 
 type TopicHandle interface {
@@ -13,7 +14,7 @@ type TopicHandle interface {
 
 type Amqp struct {
 	conn         *amqp.Connection
-	topicHandles []*TopicHandle
+	topicHandles []TopicHandle
 }
 
 func NewAmqp(c config.Config) *Amqp {
@@ -56,8 +57,13 @@ func (a *Amqp) handle(h TopicHandle, consume <-chan amqp.Delivery) {
 	}
 }
 
-func (a *Amqp) StartConsume(topicHandles ...TopicHandle) {
-	for key, _ := range topicHandles {
+func (a *Amqp) Register(topicHandles ...TopicHandle) {
+	a.topicHandles = append(a.topicHandles, topicHandles...)
+}
+
+func (a *Amqp) StartConsume() {
+	for key, h := range a.topicHandles {
+		log.Printf("message queue [%s] start", h.TopicName())
 		go func(h TopicHandle) {
 			var (
 				consume <-chan amqp.Delivery
@@ -67,6 +73,6 @@ func (a *Amqp) StartConsume(topicHandles ...TopicHandle) {
 				return
 			}
 			a.handle(h, consume)
-		}(topicHandles[key])
+		}(a.topicHandles[key])
 	}
 }

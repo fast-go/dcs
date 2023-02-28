@@ -1,7 +1,6 @@
 package main
 
 import (
-	"dcs/rpc/consumer/internal/topic"
 	"flag"
 	"fmt"
 
@@ -26,10 +25,7 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)
 
-	ctx.QueueAmqp.StartConsume(
-		topic.NewLoginTopic(ctx),
-		topic.NewRegisterTopic(ctx),
-	)
+	ctx.QueueAmqp.StartConsume()
 
 	defer ctx.Close()
 

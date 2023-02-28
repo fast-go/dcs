@@ -5,6 +5,7 @@ import (
 	"dcs/common"
 	"dcs/common/define"
 	"dcs/rpc/producer/producer"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"strings"
@@ -32,7 +33,6 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) LoginLogic {
 
 func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginReply, err error) {
 	// todo: add your logic here and delete this line
-
 	//这个服务可以挪到rpc当中
 	if len(strings.TrimSpace(req.Username)) == 0 || len(strings.TrimSpace(req.Password)) == 0 {
 		return nil, errors.New("参数错误")
@@ -67,10 +67,14 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginReply, err err
 	}
 	// ---end---
 
+	body, _ := json.Marshal(userInfo)
+
+	logx.Error("用户登录成功")
+
 	//登录成功发送事件到消息队列中
 	_, err = l.svcCtx.ProducerRpc.Publish(l.ctx, &producer.Request{
 		Topic: define.LoginTopic,
-		Body:  []byte(`{"a":"b"}`),
+		Body:  body,
 	})
 
 	if err != nil {

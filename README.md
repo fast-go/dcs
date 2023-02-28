@@ -2,8 +2,8 @@
 
 docker构建rpc应用
 ```
-docker build -t rpcservice-user -f ./rpc/user/Dockerfile .
-docker run -p 8080:8080 -d rpcservice-user
+docker build -t rpcservice-user:v1 -f ./rpc/user/Dockerfile .
+docker run -p 8080:8080 -d rpcservice-user:v1
 ```
 
 示例Dockerfile代码，也可以通过 `goctl docker -go user.go` 生成
@@ -60,3 +60,22 @@ goctl生成k8s脚本文件
 ```
 docker run -id --hostname myrabbit --name rabbitmq1 -p 15672:15672 -p 5672:5672 rabbitmq
 ```
+
+gorm生成model代码
+
+```
+gentool -dsn "root:root@tcp(localhost:3306)/dcs?charset=utf8mb4&parseTime=True&loc=Local" -tables "user"
+```
+
+
+docker 之间网络不通剋有通过  ```docker inspect 容器id``` 查看容器的ip,然后将对应的ip地址更改就可以访问呢
+
+
+启动日志同步到kafka服务
+
+``` 
+./filebeat -e -c filebeat.yaml -d publish
+```
+
+日志收集 参考 https://blog.csdn.net/jj546630576/article/details/123128581
+

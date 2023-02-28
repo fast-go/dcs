@@ -1,6 +1,8 @@
 Name: frontend-api
 Host: 0.0.0.0
-Port: 8888
+Port: 8890
+Log:
+  Mode: file
 Auth:
   AccessSecret: "11111111"
   AccessExpire: 7200
@@ -9,9 +11,11 @@ UserRpc:
     Hosts:
       - 127.0.0.1:2379
     Key: user.rpc
+#  NonBlock: true
 
 ProducerRpc:
   Etcd:
     Hosts:
       - 127.0.0.1:2379
     Key: producer.rpc
+  NonBlock: true

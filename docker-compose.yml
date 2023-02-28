@@ -7,8 +7,9 @@ networks:
 # 服务容器配置
 services:
   etcd:                                  # 自定义容器名称
-    build:
-      dockerfile: rely/etcd/Dockerfile
+#    build:
+#      dockerfile: deploy/etcd/Dockerfile
+    image: bitnami/etcd
     environment:
       - TZ=Asia/Shanghai
       - ALLOW_NONE_AUTHENTICATION=yes
@@ -18,7 +19,6 @@ services:
     networks:
       - backend
     restart: always
-
   user-rpc: # 自定义容器名称
     build:
       dockerfile: rpc/user/Dockerfile
