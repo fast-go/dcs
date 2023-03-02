@@ -20,10 +20,6 @@ type MultiWriter struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	//logx.MustSetup(logx.LogConf{
-	//	Mode: "file",
-	//	Stat: true,
-	//})
 	return &ServiceContext{
 		Config:      c,
 		UserRpc:     userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
