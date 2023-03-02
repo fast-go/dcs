@@ -24,8 +24,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	//	Mode: "file",
 	//	Stat: true,
 	//})
-	logx.Error("错误的")
-
 	return &ServiceContext{
 		Config:      c,
 		UserRpc:     userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),

@@ -4,6 +4,9 @@ Etcd:
   Hosts:
   - 127.0.0.1:2379
   Key: consumer.rpc
-
+Log:
+  Mode: file
+  #开发的时候设置plain方便查看错误信息，上线了删除，默认数据json
+  Encoding: plain
 Amqp:
   Host: amqp://guest:guest@localhost:5672/

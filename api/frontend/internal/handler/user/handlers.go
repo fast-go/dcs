@@ -12,6 +12,8 @@ import (
 
 func LoginHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		//carrier, err := trace.Extract(context.Background(), http.TimeFormat, r.Header)
+
 		var req types.LoginReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)

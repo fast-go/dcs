@@ -87,3 +87,42 @@
 {"@timestamp":"2023-02-28T17:40:03.674+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
 {"@timestamp":"2023-02-28T17:40:04.361+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
 {"@timestamp":"2023-02-28T17:40:04.955+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:04.507+08:00","caller":"svc/servicecontext.go:27","content":"错误的","level":"error"}
+{"@timestamp":"2023-03-01T09:17:04.524+08:00","caller":"internal/discovbuilder.go:34","content":"bad resolver state","level":"error"}
+{"@timestamp":"2023-03-01T09:17:16.621+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:16.621+08:00","caller":"clientinterceptors/durationinterceptor.go:35","content":"fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:\"login_topic\"  body:\"{\\\"Id\\\":1,\\\"Name\\\":\\\"jack\\\",\\\"Gender\\\":\\\"woman\\\"}\" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses","duration":"0.0ms","level":"error","span":"3e82bc6f5bb37eee","trace":"54ef39782adf60cbdd0852e2e6da3b84"}
+{"@timestamp":"2023-03-01T09:17:17.579+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:17.579+08:00","caller":"clientinterceptors/durationinterceptor.go:35","content":"fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:\"login_topic\"  body:\"{\\\"Id\\\":1,\\\"Name\\\":\\\"jack\\\",\\\"Gender\\\":\\\"woman\\\"}\" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses","duration":"0.0ms","level":"error","span":"a52615158bb684e0","trace":"43e462b3d6eb313d75793a9a54da06ca"}
+{"@timestamp":"2023-03-01T09:17:18.251+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:18.251+08:00","caller":"clientinterceptors/durationinterceptor.go:35","content":"fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:\"login_topic\"  body:\"{\\\"Id\\\":1,\\\"Name\\\":\\\"jack\\\",\\\"Gender\\\":\\\"woman\\\"}\" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses","duration":"0.0ms","level":"error","span":"28b93eb913290b9c","trace":"7ea08ae871215091021e70bd16360556"}
+{"@timestamp":"2023-03-01T09:17:18.651+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:18.652+08:00","caller":"clientinterceptors/durationinterceptor.go:35","content":"fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:\"login_topic\"  body:\"{\\\"Id\\\":1,\\\"Name\\\":\\\"jack\\\",\\\"Gender\\\":\\\"woman\\\"}\" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses","duration":"0.0ms","level":"error","span":"10d1fb272d370c2d","trace":"9e6d9e3384ae05469769778e116425d8"}
+{"@timestamp":"2023-03-01T09:17:19.243+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:17:19.243+08:00","caller":"clientinterceptors/durationinterceptor.go:35","content":"fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:\"login_topic\"  body:\"{\\\"Id\\\":1,\\\"Name\\\":\\\"jack\\\",\\\"Gender\\\":\\\"woman\\\"}\" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses","duration":"0.0ms","level":"error","span":"809c1889f48168a0","trace":"b474cefe9241dd73091a3fcc37cb7575"}
+{"@timestamp":"2023-03-01T09:17:59.678+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:02.525+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:04.505+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:05.181+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:05.863+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:13.066+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:13.793+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:14.360+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:14.897+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:15.509+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:16.051+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:16.803+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:18:17.449+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:25:07.515+08:00","caller":"svc/servicecontext.go:27","content":"错误的","level":"error"}
+{"@timestamp":"2023-03-01T09:25:33.562+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:25:35.977+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:27:47.963+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:27:48.669+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:27:52.485+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:28:58.283+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:28:58.704+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:29:37.280+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:29:38.158+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:29:38.777+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:29:39.424+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:29:39.990+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
+{"@timestamp":"2023-03-01T09:46:09.383+08:00","caller":"internal/discovbuilder.go:34","content":"bad resolver state","level":"error"}
