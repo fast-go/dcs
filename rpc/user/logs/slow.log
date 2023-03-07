@@ -1,0 +1,3 @@
+2023-03-06T14:58:12.396+08:00	[33;1m slow [0m	[RPC] slowcall - 172.19.112.1:64051 - /user.user/getUser - {"id":1}	duration=505.8ms	caller=serverinterceptors/statinterceptor.go:70	trace=618f603dfad586788e426c0801693ce4	span=8fe0cb9ee04f6180
+2023-03-06T15:18:02.995+08:00	[33;1m slow [0m	[RPC] slowcall - 172.19.112.1:63405 - /user.user/getUser - {"id":1}	duration=527.0ms	caller=serverinterceptors/statinterceptor.go:70	trace=5724c90755225a0109d9068bddd551be	span=3b6806cff9779803
+2023-03-06T15:39:41.039+08:00	[33;1m slow [0m	[RPC] slowcall - 172.19.112.1:64732 - /user.user/getUser - {"id":1}	duration=506.2ms	caller=serverinterceptors/statinterceptor.go:70	trace=505662eea88541f932245bba5c74bb99	span=a42c383a3e28fae8

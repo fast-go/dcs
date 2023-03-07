@@ -1,0 +1,1 @@
+goctl rpc protoc product.proto --go_out=../rpc/product --go-grpc_out=../rpc/product --zrpc_out=../rpc/product

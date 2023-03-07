@@ -3,8 +3,15 @@ Host: 0.0.0.0
 Port: 8890
 Log:
   Mode: file
-#开发的时候设置plain方便查看错误信息，上线了删除，默认数据json
+  #开发的时候设置plain方便查看错误信息，上线了删除，默认数据json
   Encoding: plain
+#链路追踪
+#Telemetry:
+#  Name: frontend.api
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.6
+#  Batcher: jaeger
+
 Auth:
   AccessSecret: "11111111"
   AccessExpire: 7200
@@ -13,7 +20,7 @@ UserRpc:
     Hosts:
       - 127.0.0.1:2379
     Key: user.rpc
-#  NonBlock: true
+  NonBlock: true
 
 ProducerRpc:
   Etcd:
@@ -21,3 +28,22 @@ ProducerRpc:
       - 127.0.0.1:2379
     Key: producer.rpc
   NonBlock: true
+
+
+ProductRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: product.rpc
+  NonBlock: true
+
+OrderRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: order.rpc
+  NonBlock: true
+
+
+
+

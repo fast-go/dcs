@@ -126,3 +126,549 @@
 {"@timestamp":"2023-03-01T09:29:39.424+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
 {"@timestamp":"2023-03-01T09:29:39.990+08:00","caller":"user/loginlogic.go:72","content":"用户登录成功","level":"error"}
 {"@timestamp":"2023-03-01T09:46:09.383+08:00","caller":"internal/discovbuilder.go:34","content":"bad resolver state","level":"error"}
+2023-03-06T13:54:34.490+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T13:54:49.426+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:49.426+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=7be6aebcb2ed4e37bab0bb1789a69c07	span=8165b548f48e5903
+2023-03-06T13:54:56.215+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:56.215+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=dd5e7aa1c845d82807ad2b90e77a0690	span=4f67cd5a9f4c563e
+2023-03-06T13:54:56.330+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T13:54:56.920+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:56.920+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=5cec3b7424b03ecabc3995b50f4a24d9	span=cd9fd5b2933ad2c2
+2023-03-06T13:54:57.580+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:57.581+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.8ms	caller=clientinterceptors/durationinterceptor.go:35	trace=20eaaa003e68d56c2c7b5f6072ae60de	span=2b3d66af96e853fd
+2023-03-06T13:54:58.199+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:58.200+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=7f407816c0937675eda926f3fecbde87	span=5a9dcd89c740e4e1
+2023-03-06T13:54:58.712+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:58.712+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=2d539704d6361195d2b58b2497ef034e	span=f547f8e8bb0d1871
+2023-03-06T13:54:59.355+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:59.355+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=74b384dac95637d02dbdd75deecc5e60	span=2fba01a2c388e226
+2023-03-06T13:54:59.804+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T13:54:59.804+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=163b8d47ed2663a9a088a95b0ffd66e0	span=5af84a43752f48c7
+2023-03-06T13:55:03.618+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:09:22.332+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T14:09:26.684+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T14:11:14.902+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:11:14.903+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=caac8a9049f7583d11310f3ea6b89365	span=d32d47db5aba803d
+2023-03-06T14:11:19.086+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:12:13.246+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:12:13.247+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=70be5281bc0b347b0f817551a1f33dc7	span=371cdf92051037a1
+2023-03-06T14:12:14.454+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:12:14.454+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.8ms	caller=clientinterceptors/durationinterceptor.go:35	trace=5bad59c317e24c316421e41ecd3acafb	span=a06614217f5aa9eb
+2023-03-06T14:12:23.742+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:13:47.010+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:13:47.010+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=78000a7ffb00fb345043c8fc1872e516	span=34dbdfcf881e9e26
+2023-03-06T14:13:47.742+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:13:47.742+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=6622b2a4601f4b7295473819d5bc4de0	span=bbcdabc980b2adc7
+2023-03-06T14:13:55.709+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:20:57.366+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:20:57.366+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=6dacd744b3d5d36a9990f970aa8780ee	span=030aedd911171e0a
+2023-03-06T14:21:08.235+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:48:58.013+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:48:58.013+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=a4be70e6ed7313fa2e56116ee2c6c281	span=41e138de936ed14c
+2023-03-06T14:48:59.020+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:48:59.021+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=25de4bd96351c5f4932482ecf886e74e	span=68a733ca3219d0e2
+2023-03-06T14:49:00.810+08:00	[31;1m error [0m	用户登录成功	caller=user/loginlogic.go:72
+2023-03-06T14:49:00.810+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/producer.rpc/producer.producer/publish - topic:"login_topic" body:"{\"Id\":1,\"Name\":\"jack\",\"Gender\":\"woman\"}" - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=db6b1b15f513b47758914bea1d797b13	span=21cb34cef1637f6e
+2023-03-06T14:49:07.746+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:49:13.099+08:00	[31;1m error [0m	authorize failed: Token is expired
+=> POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcyMzU1ODYsImlhdCI6MTY3NzIyODM4NiwidXNlcklkIjoxfQ.-0gV5cWhSMiG79dwk5PfJLpuVAHTPxTHF3G65fyj2Ww
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: cd5742d8-5215-4ae7-b1af-159307f877b5
+User-Agent: PostmanRuntime/7.31.1
+
+	caller=handler/authhandler.go:103
+2023-03-06T14:49:14.085+08:00	[31;1m error [0m	authorize failed: Token is expired
+=> POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcyMzU1ODYsImlhdCI6MTY3NzIyODM4NiwidXNlcklkIjoxfQ.-0gV5cWhSMiG79dwk5PfJLpuVAHTPxTHF3G65fyj2Ww
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: b3a83ef6-f23b-4720-9123-f83d7f6fbfe1
+User-Agent: PostmanRuntime/7.31.1
+
+	caller=handler/authhandler.go:103
+2023-03-06T14:49:20.077+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:49:23.547+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ec2caf9798f41f14d2dd2e9f930c7de1	span=562610a13740b3bf
+2023-03-06T14:49:23.547+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58760 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: 68707771-4f66-4cbd-bb6a-bf1095853064
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=0.0ms	caller=handler/loghandler.go:162	trace=ec2caf9798f41f14d2dd2e9f930c7de1	span=eaea0bad608e8c01
+2023-03-06T14:49:28.728+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=b83a78a44212dbde60c7fd4e3b2386ab	span=4f6be5efc0d72dc3
+2023-03-06T14:49:28.729+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58328 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: 7b706902-3226-4bbc-8d09-fbd4b8826a00
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=1.0ms	caller=handler/loghandler.go:162	trace=b83a78a44212dbde60c7fd4e3b2386ab	span=62b97b5a6a4ab0bc
+2023-03-06T14:49:29.451+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=bba730a010cbb02592d45d861cae83d2	span=6a197db8275b47c3
+2023-03-06T14:49:29.451+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58328 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: f367fc19-365f-4033-bdbc-1ca62872db44
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=0.0ms	caller=handler/loghandler.go:162	trace=bba730a010cbb02592d45d861cae83d2	span=cec67b194530ab9e
+2023-03-06T14:49:30.086+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=f34806367794a99e5c67e23d1b7a97e9	span=0d926f65a50fc9ca
+2023-03-06T14:49:30.086+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58328 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: 39c37de7-e97c-45b7-a070-f4c8cadaa6f8
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=0.6ms	caller=handler/loghandler.go:162	trace=f34806367794a99e5c67e23d1b7a97e9	span=02c1fc7ae0310d60
+2023-03-06T14:49:30.614+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=01cc24d2f73227f4d2eda8a3fa69a52f	span=cb4ededc8c94dc94
+2023-03-06T14:49:30.614+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58328 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: ad276eab-a98f-4c24-b66d-72c0576d6045
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=0.1ms	caller=handler/loghandler.go:162	trace=01cc24d2f73227f4d2eda8a3fa69a52f	span=d8f720759bf1f362
+2023-03-06T14:49:31.358+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unavailable desc = last connection error: connection error: desc = "transport: Error while dialing dial tcp 172.19.112.1:8081: connectex: No connection could be made because the target machine actively refused it."	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=c73eaf19adc98288f9bee3813d34abaa	span=3785a349cfe852b1
+2023-03-06T14:49:31.358+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /user/get_info - 127.0.0.1:58328 - PostmanRuntime/7.31.1
+POST /user/get_info HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzgwOTI1NDAsImlhdCI6MTY3ODA4NTM0MCwidXNlcklkIjoxfQ.TIuGnv_rFaZNtiXKorppIFCQHFbgyEEcPUnN33RpgZU
+Connection: keep-alive
+Content-Length: 0
+Postman-Token: 7e1a673a-9599-44bd-861e-7025c45a9756
+User-Agent: PostmanRuntime/7.31.1
+
+	duration=0.0ms	caller=handler/loghandler.go:162	trace=c73eaf19adc98288f9bee3813d34abaa	span=f3a2f22e27a2ce7c
+2023-03-06T14:49:34.609+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:49:41.910+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:50:52.570+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unauthenticated desc = app/token required	duration=2.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ce76e1622fa49d103e6cb89b945d5ab5	span=9cb34727a758fc16
+2023-03-06T14:50:57.049+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:50:57.502+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unauthenticated desc = app/token required	duration=2.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=2f401f0ae68ae8de917f4d96244d4d10	span=6a647578e44f34f3
+2023-03-06T14:50:58.267+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/user.user/getUser - id:1 - rpc error: code = Unauthenticated desc = app/token required	duration=0.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=e8741b38fef51b9cee8fc49900db45e5	span=3b5655a1c753cd81
+2023-03-06T14:51:02.037+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:53:51.846+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:53:54.125+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:53:59.146+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:54:39.217+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:56:59.493+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:57:59.779+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T14:58:21.657+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:5778/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:15:13.116+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:15:24.894+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:5778/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:15:35.296+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:15:52.153+08:00	[31;1m error [0m	[otel] error: Post "http://localhsot:5778/api/traces": dial tcp: lookup localhsot: no such host	caller=trace/agent.go:108
+2023-03-06T15:17:52.247+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:17:59.223+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:18:06.504+08:00	[31;1m error [0m	[otel] error: Post "http://localhsot:5775/api/traces": dial tcp: lookup localhsot: no such host	caller=trace/agent.go:108
+2023-03-06T15:18:18.816+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:18:35.662+08:00	[31;1m error [0m	[otel] error: Post "http://localhsot:5778/api/traces": dial tcp: lookup localhsot: no such host	caller=trace/agent.go:108
+2023-03-06T15:22:17.864+08:00	[31;1m error [0m	[otel] error: Post "http://localhsot:5778/api/traces": dial tcp: lookup localhsot: no such host	caller=trace/agent.go:108
+2023-03-06T15:39:19.430+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-06T15:39:46.720+08:00	[31;1m error [0m	[otel] error: Post "http://localhsot:14268/api/traces": dial tcp: lookup localhsot: no such host	caller=trace/agent.go:108
+2023-03-07T14:20:04.903+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:20:07.951+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 38e119e5-a389-4219-915f-e96230432647
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:20:11.954+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 91309a0c-c82a-48fa-a0f6-ca637cf57e0a
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:20:30.914+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 99d6c719-7a34-4f42-b028-a4e0882aaf69
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:20:40.681+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: a2994518-e66b-4d88-aaf1-f110f2385cce
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:20:41.542+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 954d9ded-e27e-4fe9-8a94-6968def01056
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:21:26.654+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:21:28.373+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 3c5294ec-a387-4d6a-a36c-6a5480882e78
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:21:30.322+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 31900c79-379b-4dee-873d-78774e2608f8
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:21:42.104+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:21:43.828+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 21dd118b-b26d-4a63-a818-177552f810aa
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:21:47.079+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 3e8729ae-45dd-4b8b-b354-d02a1fa7bdec
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:21:55.495+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 56372d39-72d8-4a06-8c50-739088341fe5
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:22:07.516+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: d97c447c-5b21-4cfc-9ed2-81b7f164e0aa
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:22:17.038+08:00	[31;1m error [0m	authorize failed: no token present in request
+=> POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: 97370e38-8d16-46c0-910d-ca464b9e3285
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	caller=handler/authhandler.go:103
+2023-03-07T14:22:31.465+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:22:51.316+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:23:16.073+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:23:50.787+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:27:24.973+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/product.rpc/user.product/getProduct - uniqueId:"111" - rpc error: code = Unknown desc = write tcp 127.0.0.1:49921->127.0.0.1:6379: wsasend: An existing connection was forcibly closed by the remote host.	duration=97.2ms	caller=clientinterceptors/durationinterceptor.go:35	trace=74cfc53f65a3ac52229b31ff60e64e5d	span=804e40887f73696a
+2023-03-07T14:27:24.974+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /product/get_detail - 127.0.0.1:57663 - PostmanRuntime/7.31.1
+POST /product/get_detail HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 19
+Content-Type: application/json
+Postman-Token: a08925d3-ef14-4aa9-a479-5e42cdce9c9a
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":"111"}	duration=98.1ms	caller=handler/loghandler.go:162	trace=74cfc53f65a3ac52229b31ff60e64e5d	span=6eff67b4c1ca4c21
+2023-03-07T14:54:56.089+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T14:54:56.089+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T15:03:07.323+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T15:03:07.324+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T15:03:25.398+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:11:23.654+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:11:23.656+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:11:23.657+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:11:23.657+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:11:52.388+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=af003cdec913ceee3e803ec1725121f9	span=d9ab590a3ec54914
+2023-03-07T17:11:52.388+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49459 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 57f8d049-f9dd-479f-9e08-d9eae7f411b5
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=af003cdec913ceee3e803ec1725121f9	span=32f89c78c7433ba6
+2023-03-07T17:12:17.105+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=8d6be0871f2bdfe2833632d98763bf85	span=e8da50b4d052dccb
+2023-03-07T17:12:17.105+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49483 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 71b3ac2b-117b-47ff-8d2b-2db1d9aaa9a8
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=8d6be0871f2bdfe2833632d98763bf85	span=a739f967c1dec95a
+2023-03-07T17:12:18.227+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=1d2ac5d108efcbe780030f1fd6fd62be	span=2981c3b5572645df
+2023-03-07T17:12:18.227+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49483 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: da6750a1-02dd-49d5-ba16-03dfabb467ba
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.8ms	caller=handler/loghandler.go:162	trace=1d2ac5d108efcbe780030f1fd6fd62be	span=b28bb660538128c8
+2023-03-07T17:12:18.946+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.3ms	caller=clientinterceptors/durationinterceptor.go:35	trace=0d9be348382d6ac6e2a1d381d7a0a6de	span=4026e605c42b39e6
+2023-03-07T17:12:18.946+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49483 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 519aa6f2-5f51-4998-90af-f30fc3c05fc7
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.3ms	caller=handler/loghandler.go:162	trace=0d9be348382d6ac6e2a1d381d7a0a6de	span=0e83ce1d7366a833
+2023-03-07T17:12:19.575+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=8583de48b87eae0ec0dce8b637af7884	span=cdfc91d708a6e39d
+2023-03-07T17:12:19.575+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49483 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 93c6feae-132c-4464-9c12-1d20be3c71b2
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=8583de48b87eae0ec0dce8b637af7884	span=1608c166e54a51d8
+2023-03-07T17:12:20.281+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=4c0a5dcf296d31c123a4a4cbf6c30a9d	span=c64b8fcfc288d4ab
+2023-03-07T17:12:20.281+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49483 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: c0a47622-172f-494d-a160-3d75054b6ecc
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=4c0a5dcf296d31c123a4a4cbf6c30a9d	span=4989cf6c33dbfc32
+2023-03-07T17:12:25.067+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:12:25.067+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:12:25.068+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:12:27.346+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=2039163377e81d0a647c44596a3a704b	span=62cc9f8b5d6736d4
+2023-03-07T17:12:27.346+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49497 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 68454dee-8817-49b0-92dd-0f8676baf2d0
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.5ms	caller=handler/loghandler.go:162	trace=2039163377e81d0a647c44596a3a704b	span=272a4d8de8343f21
+2023-03-07T17:12:28.274+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=5e9c76860cf8e8ff705ff598544ccbe7	span=140bc55c5c40a7dd
+2023-03-07T17:12:28.274+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49497 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 788455ce-ecc9-42f0-94fa-c750284f927d
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=5e9c76860cf8e8ff705ff598544ccbe7	span=5fa7e7b13c2fd6d2
+2023-03-07T17:12:28.969+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=8e811b58fb179ca8f8e5bef11daeeb27	span=5cc3e3fd10bf0bdb
+2023-03-07T17:12:28.969+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49497 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: de65d93e-043a-432c-8a68-432d9b7cc608
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.1ms	caller=handler/loghandler.go:162	trace=8e811b58fb179ca8f8e5bef11daeeb27	span=62009d0aede4324a
+2023-03-07T17:12:29.521+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=70d2c2de9becf18582232dada9e31e59	span=adcd0fd419f184c7
+2023-03-07T17:12:29.521+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49497 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 0c09c658-eea8-44e3-be3d-8a2a308bd121
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.5ms	caller=handler/loghandler.go:162	trace=70d2c2de9becf18582232dada9e31e59	span=87fb6549301144fd
+2023-03-07T17:12:30.171+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=facd5cbcb8961bf869e62842e47ddc54	span=1fb60ac8673c43b4
+2023-03-07T17:12:30.171+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:49497 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 60f0dde0-3828-4922-aa9e-788308a41ea8
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=facd5cbcb8961bf869e62842e47ddc54	span=8bad3e5ba222d214
+2023-03-07T17:12:51.810+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=0.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ba3c48f207adb3233c449c84f9da2af7	span=71d11b44c6ac8211
+2023-03-07T17:12:51.810+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:51955 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 3950a062-1754-4008-a150-c62cc4e7a7d0
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=0.0ms	caller=handler/loghandler.go:162	trace=ba3c48f207adb3233c449c84f9da2af7	span=44312d84ffc39b7f
+2023-03-07T17:32:13.264+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil	duration=1.6ms	caller=clientinterceptors/durationinterceptor.go:35	trace=0ec6a3e1fd40b00e506232271bfb472a	span=24b69f9aec10e62e
+2023-03-07T17:32:13.264+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:61915 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 6e598594-421d-4b2b-8636-f468669e775b
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=2.1ms	caller=handler/loghandler.go:162	trace=0ec6a3e1fd40b00e506232271bfb472a	span=f61d211463b975b2
+2023-03-07T17:32:59.766+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:32:59.768+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-07T17:33:20.250+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil	duration=1.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=3d03bf3ff2e0420eb7ab8b76949f3b2b	span=54f55d8a4f096846
+2023-03-07T17:33:20.250+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:55173 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 26e12b58-e434-4044-bc1d-19bafa395973
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=1.0ms	caller=handler/loghandler.go:162	trace=3d03bf3ff2e0420eb7ab8b76949f3b2b	span=6a7c39e2accf5b5d
+2023-03-07T17:33:21.365+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/create - productId:1 - rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil	duration=1.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=4e3724ef3390f947268ae896ee1fb0cf	span=fe986392fca28b44
+2023-03-07T17:33:21.365+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:55173 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: b3df9d2c-c9d9-4070-9884-a26a619d6212
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=1.5ms	caller=handler/loghandler.go:162	trace=4e3724ef3390f947268ae896ee1fb0cf	span=b23e10b135e546b3

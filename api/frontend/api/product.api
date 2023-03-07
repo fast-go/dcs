@@ -1,0 +1,21 @@
+type (
+    ProductGetDetailReq {
+        ProductId int64 `json:"productId"`
+    }
+
+    ProductGetDetailResp {
+        Id int64 `json:"id"`
+        Name string `json:"name"`
+        Price int64 `json:"price"`
+        Stock int64 `json:"stock"`
+    }
+)
+
+@server(
+    group: product
+)
+
+service frontend-api {
+    @handler product
+    post /product/get_detail (ProductGetDetailReq) returns (ProductGetDetailResp)
+}

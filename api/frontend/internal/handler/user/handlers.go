@@ -12,14 +12,11 @@ import (
 
 func LoginHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		//carrier, err := trace.Extract(context.Background(), http.TimeFormat, r.Header)
-
 		var req types.LoginReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.Error(w, err)
 			return
 		}
-
 		l := user.NewLoginLogic(r.Context(), ctx)
 		resp, err := l.Login(&req)
 		if err != nil {
@@ -32,7 +29,6 @@ func LoginHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 
 func LogoutHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-
 		l := user.NewLogoutLogic(r.Context(), ctx)
 		err := l.Logout()
 		if err != nil {
@@ -56,3 +52,15 @@ func UserinfoHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

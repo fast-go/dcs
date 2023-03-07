@@ -4,6 +4,8 @@ package handler
 import (
 	"net/http"
 
+	order "dcs/api/frontend/internal/handler/order"
+	product "dcs/api/frontend/internal/handler/product"
 	search "dcs/api/frontend/internal/handler/search"
 	user "dcs/api/frontend/internal/handler/user"
 	"dcs/api/frontend/internal/svc"
@@ -55,6 +57,26 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/search/ping",
 				Handler: search.PingHandler(serverCtx),
+			},
+		},
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/product/get_detail",
+				Handler: product.ProductHandler(serverCtx),
+			},
+		},
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/order/create",
+				Handler: order.OrderHandler(serverCtx),
 			},
 		},
 	)

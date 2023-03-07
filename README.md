@@ -47,7 +47,6 @@ docker-compose up -d
 docker-compose up -d --force-recreate --build
 ```
 
-
 goctl生成k8s脚本文件
 
 ```
@@ -67,9 +66,11 @@ gorm生成model代码
 gentool -dsn "root:root@tcp(localhost:3306)/dcs?charset=utf8mb4&parseTime=True&loc=Local" -tables "user"
 ```
 
+```jsunicoderegexp
+goctl model mysql datasource -c -url="root:root@tcp(127.0.0.1:3306)/dcs" -table="*"  -dir="./model"
+```
 
 docker 之间网络不通剋有通过  ```docker inspect 容器id``` 查看容器的ip,然后将对应的ip地址更改就可以访问呢
-
 
 启动日志同步到kafka服务
 
@@ -78,4 +79,38 @@ docker 之间网络不通剋有通过  ```docker inspect 容器id``` 查看容�
 ```
 
 日志收集 参考 https://blog.csdn.net/jj546630576/article/details/123128581
+
+### 链路追踪
+
+docker 启动 jaeger服务
+
+```
+ docker run -d --name jaeger -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16686:16686 -p 14268:14268 -p 9411:9411 jaegertracing/all-in-one:1.6
+```
+config.yaml 文件中配置
+
+```
+Telemetry:
+  Name: user.api
+  Endpoint: http://127.0.0.1:14268/api/traces
+  Sampler: 1.6
+  Batcher: jaeger
+  ```
+
+访问 jaeger webUi界面查看 `http://localhost:16686/`
+
+运行 es
+
+参考 `https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html`
+
+```
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+```
+
+安装 kabana 
+参考 `https://blog.csdn.net/qq_34285557/article/details/127242907`
+
+```
+docker run -d --name kabana -v ./config/:/usr/share/kibana/config -p 5601:5601 kibana:7.2.0
+```
 

@@ -5,7 +5,7 @@ Clusters:
         Log:
           Mode: file
         Brokers:
-          - "kafka:9092"
+          - "127.0.0.1:9092"
         Topics:
           - log-collection
         Group: stash
@@ -39,8 +39,8 @@ Clusters:
       ElasticSearch:
         Hosts:
           - "http://127.0.0.1:9200"
-#        Index: "go-stash-{{yyyy.MM.dd}}"
-        Index: ".kibana_-{{yyyy.MM.dd}}"
+        Index: "go-stash-{{yyyy.MM.dd}}"
+#        Index: ".kibana_-{{yyyy.MM.dd}}"
         MaxChunkBytes: 5242880
         GracePeriod: 10s
         Compress: false

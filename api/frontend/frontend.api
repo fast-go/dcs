@@ -1,2 +1,4 @@
 import "api/user.api"
 import "api/search.api"
+import "api/product.api"
+import "api/order.api"

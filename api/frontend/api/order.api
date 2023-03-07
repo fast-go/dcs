@@ -1,0 +1,23 @@
+type (
+    CreateOrderReq {
+        ProductId int64 `json:"productId"`
+        Num int64 `json:"num"`
+    }
+
+    CreateOrderResp {
+        Id int64 `json:"id"`
+        ProductName string `json:"productName"`
+        ProductId int64 `json:"productId"`
+        Uid int64 `json:"uid"`
+        Num int64 `json:"num"`
+    }
+)
+
+@server(
+    group: order
+)
+
+service frontend-api {
+    @handler order
+    post /order/create (CreateOrderReq) returns (CreateOrderResp)
+}

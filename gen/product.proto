@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "./product";
+
+message DetailReq{
+  int64 id = 1;
+}
+
+message ProductDetail{
+  int64 id = 1;
+  string name = 2;
+  int64 price = 3;
+  int64 stock = 4;
+}
+
+service product {
+  rpc getProduct(DetailReq) returns(ProductDetail);
+}

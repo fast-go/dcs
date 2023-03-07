@@ -1,0 +1,17 @@
+2023-03-06T13:53:13.388+08:00	[31;1m error [0m	context deadline exceeded	caller=zrpc/server.go:91
+2023-03-06T14:50:56.148+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:51:01.109+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:53:53.373+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:53:55.660+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:54:00.689+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:54:39.588+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:57:01.064+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T14:58:20.784+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:15:28.370+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:15:50.237+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:18:12.326+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:18:34.150+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:22:16.339+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:39:45.348+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:40:19.954+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108
+2023-03-06T15:41:21.898+08:00	[31;1m error [0m	[otel] error: Post "http://jaeger:14268/api/traces": dial tcp: lookup jaeger: no such host	caller=trace/agent.go:108

@@ -17,4 +17,6 @@ type Config struct {
 
 	UserRpc     zrpc.RpcClientConf
 	ProducerRpc zrpc.RpcClientConf
+	ProductRpc  zrpc.RpcClientConf
+	OrderRpc    zrpc.RpcClientConf
 }
