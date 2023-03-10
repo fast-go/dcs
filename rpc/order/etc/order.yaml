@@ -23,6 +23,8 @@ Redis:
   #  Key: rpc:auth:user     # 指定 Key 应为 hash 类型
   Host: localhost:6379
 
+
+
 UserRpc:
   Etcd:
     Hosts:

@@ -124,6 +124,9 @@ kafka-topics.sh --create --zookeeper 172.17.0.2:2181 --replication-factor 1 --pa
 
 分布式事务
 
+
 ```jsunicoderegexp
+go run main.go -c conf.yml
+
 docker run -itd  --name dtm -p 36789:36789 -p 36790:36790  yedf/dtm:latest
 ```

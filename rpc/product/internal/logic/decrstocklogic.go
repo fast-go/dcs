@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
 	"github.com/dtm-labs/client/dtmgrpc"
 	_ "github.com/dtm-labs/driver-gozero"
 	"google.golang.org/grpc/codes"
@@ -38,6 +39,7 @@ func (l *DecrStockLogic) DecrStock(in *product.DecrStockReq) (*product.DecrStock
 		return nil, status.Error(500, err.Error())
 	}
 
+	fmt.Println(1111)
 	// 获取子事务屏障对象
 	barrier, err := dtmgrpc.BarrierFromGrpc(l.ctx)
 	if err != nil {

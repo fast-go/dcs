@@ -4,6 +4,7 @@ import (
 	"context"
 	"dcs/common/define"
 	"dcs/rpc/consumer/internal/config"
+	"dcs/rpc/order/order"
 	"dcs/rpc/order/orderclient"
 	"dcs/rpc/product/product"
 	"dcs/rpc/product/productclient"
@@ -52,7 +53,7 @@ func (r *CreateOrderTopic) Consume(body []byte) {
 	var (
 		co  CreateOrder
 		err error
-		pd  *product.ProductDetail
+		//pd  *product.ProductDetail
 		//createOrderResp *order.CreateOrderResp
 		//decrStockRes    *product.DecrStockResp
 	)
@@ -61,72 +62,65 @@ func (r *CreateOrderTopic) Consume(body []byte) {
 		return
 	}
 
-	pd, err = r.Option.ProductRpc.GetProduct(r.Option.ctx, &product.DetailReq{Id: co.ProductId})
-
-	fmt.Println(err)
-
-	if err != nil {
-		logx.Errorf(fmt.Sprintf("find product err: %s", err))
-		return
-	}
-
-	fmt.Println(11)
-
-	if pd.Stock <= 0 {
-		fmt.Println("no stock")
-		return
-	}
+	//pd, err = r.Option.ProductRpc.GetProduct(r.Option.ctx, &product.DetailReq{Id: co.ProductId})
+	//
+	//fmt.Println(err)
+	//
+	//if err != nil {
+	//	logx.Errorf(fmt.Sprintf("find product err: %s", err))
+	//	return
+	//}
+	////
+	////fmt.Println(11)
+	////
+	//if pd.Stock <= 0 {
+	//	fmt.Println("no stock")
+	//	return
+	//}
 	//
 	//fmt.Println(22)
 	//
 	//// dtm 服务的 etcd 注册地址
-	//var dtmServer = "etcd://localhost:2379/dtmservice"
-	var dtmServer = "http://localhost:36789/api/dtmsvr"
+	var dtmServer = "etcd://localhost:2379/dtmservice"
+	//var dtmServer = "http://localhost:36790/api/dtmsvr"
 
 	productRpcService, err := r.Option.Config.ProductRpc.BuildTarget()
 
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
 	// 创建一个gid
 	gid := dtmgrpc.MustGenGid(dtmServer)
-
-	fmt.Println(gid)
-	fmt.Println(productRpcService)
-
-	return
-	//orderRpcService, _ := r.Option.Config.OrderRpc.BuildTarget()
+	////
+	//fmt.Println(gid)
+	//fmt.Println(productRpcService)
 	//
-	//fmt.Println(r.Option.Config.OrderRpc.Endpoints)
+	//return
+	orderRpcService, _ := r.Option.Config.OrderRpc.BuildTarget()
+
+	//orderRpcService = "http://127.0.0.1:9090"
+
+	//fmt.Println("======")
+	fmt.Println(orderRpcService)
+	//fmt.Println("======")
 	//
+	//var dtmServer = "http://localhost:36789/api/dtmsvr"
+
 	//// 创建一个saga协议的事务
-	//saga := dtmgrpc.NewSagaGrpc(dtmServer, gid).
-	//	//Add(orderRpcService+"/order.Order/Create", orderRpcService+"/order.Order/CreateRevert", &order.CreateOrderReq{ProductId: co.ProductId})
-	//	Add(productRpcService+"/product.Product/DecrStock", productRpcService+"/product.Product/DecrStockRevert", &product.DecrStockReq{
-	//		Id:  co.ProductId,
-	//		Num: 1,
-	//	})
+	saga := dtmgrpc.NewSagaGrpc(dtmServer, gid).
+		Add(orderRpcService+"/order.order/create", orderRpcService+"/order.order/createRevert", &order.CreateOrderReq{ProductId: co.ProductId}).
+		Add(productRpcService+"/product.product/decrStock", productRpcService+"/product.product/decrStockRevert", &product.DecrStockReq{
+			Id:  co.ProductId,
+			Num: 1,
+		})
 
-	//fmt.Println(333)
-	////// 事务提交
-	//err = saga.Submit()
-	//if err != nil {
-	//	logx.Error(err)
-	//	return
-	//}
-	//_, err = r.Option.OrderRpc.Create(r.Option.ctx, &order.CreateOrderReq{ProductId: co.ProductId})
-	//
-	//if err != nil {
-	//	logx.Errorf(fmt.Sprintf("create order err: %s", err))
-	//	return
-	//}
-	//
-	////product inventory deduction
-	//_, err = r.Option.ProductRpc.DecrStock(r.Option.ctx, &product.DecrStockReq{
-	//	Id:  co.ProductId,
-	//	Num: 1,
-	//})
+	// 事务提交
+	err = saga.Submit()
+	if err != nil {
+		logx.Error(err)
+		return
+	}
 
 	if err != nil {
 		return

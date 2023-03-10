@@ -103,7 +103,7 @@ func (m *defaultOrderModel) Update(ctx context.Context, data *Order) error {
 }
 
 func (m *defaultOrderModel) TxInsert(ctx context.Context, tx *sql.Tx, data *Order) (sql.Result, error) {
-	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?)", m.table, orderRowsExpectAutoSet)
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?)", m.table, orderRowsExpectAutoSet)
 	ret, err := tx.ExecContext(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num)
 
 	return ret, err

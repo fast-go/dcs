@@ -8,4 +8,7 @@ type Config struct {
 	Amqp struct {
 		Host string
 	}
+
+	ProductRpc zrpc.RpcClientConf
+	OrderRpc   zrpc.RpcClientConf
 }

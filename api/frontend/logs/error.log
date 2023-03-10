@@ -672,3 +672,30 @@ Postman-Token: b3df9d2c-c9d9-4070-9884-a26a619d6212
 User-Agent: PostmanRuntime/7.31.1
 
 {"productId":1,"num":3}	duration=1.5ms	caller=handler/loghandler.go:162	trace=4e3724ef3390f947268ae896ee1fb0cf	span=b23e10b135e546b3
+2023-03-10T15:06:46.313+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T15:06:46.313+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T15:06:59.986+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/order.rpc/order.order/createAsync - productId:1 - rpc error: code = Unavailable desc = last resolver error: produced zero addresses	duration=17.4ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ce3091cefbc2380fb648b12471be49e1	span=1f221d8cb1365b9f
+2023-03-10T15:06:59.986+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /order/create - 127.0.0.1:59808 - PostmanRuntime/7.31.1
+POST /order/create HTTP/1.1
+Host: 127.0.0.1:8890
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 23
+Content-Type: application/json
+Postman-Token: 76d66d39-9949-45f5-a560-8897c6a80ce5
+User-Agent: PostmanRuntime/7.31.1
+
+{"productId":1,"num":3}	duration=18.9ms	caller=handler/loghandler.go:162	trace=ce3091cefbc2380fb648b12471be49e1	span=6072a353bf0914f9
+2023-03-10T16:15:26.992+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T16:16:14.962+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T16:16:37.998+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T16:41:53.413+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T16:43:09.507+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:20:15.851+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:21:53.464+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:30:07.908+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:49:19.765+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:50:12.559+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:51:58.493+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-03-10T17:54:43.764+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34

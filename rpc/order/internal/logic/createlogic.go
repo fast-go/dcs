@@ -29,16 +29,18 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 
 func (l *CreateLogic) Create(in *order.CreateOrderReq) (*order.CreateOrderResp, error) {
 	// 获取 RawDB
+	fmt.Println(888)
 	db, err := l.svcCtx.SqlConn.RawDB()
 	if err != nil {
 		return nil, status.Error(500, err.Error())
 	}
-
+	fmt.Println(7777)
 	// 获取子事务屏障对象
 	barrier, err := dtmgrpc.BarrierFromGrpc(l.ctx)
 	if err != nil {
 		return nil, status.Error(500, err.Error())
 	}
+	fmt.Println(333333)
 	// 开启子事务屏障
 	if err := barrier.CallWithDB(db, func(tx *sql.Tx) error {
 		// 查询用户是否存在
@@ -51,8 +53,11 @@ func (l *CreateLogic) Create(in *order.CreateOrderReq) (*order.CreateOrderResp, 
 			ProductId: in.ProductId,
 			Status:    0,
 		}
+		fmt.Println(888999)
 		// create order
 		_, err = l.svcCtx.OrderModel.TxInsert(l.ctx, tx, &newOrder)
+		fmt.Println(11111)
+		fmt.Println(err)
 		if err != nil {
 			return fmt.Errorf("create order error")
 		}
