@@ -26,3 +26,13 @@ func (s *OrderServer) Create(ctx context.Context, in *order.CreateOrderReq) (*or
 	l := logic.NewCreateLogic(ctx, s.svcCtx)
 	return l.Create(in)
 }
+
+func (s *OrderServer) CreateRevert(ctx context.Context, in *order.CreateOrderReq) (*order.CreateOrderResp, error) {
+	l := logic.NewCreateRevertLogic(ctx, s.svcCtx)
+	return l.CreateRevert(in)
+}
+
+func (s *OrderServer) CreateAsync(ctx context.Context, in *order.CreateOrderReq) (*order.CreateOrderResp, error) {
+	l := logic.NewCreateAsyncLogic(ctx, s.svcCtx)
+	return l.CreateAsync(in)
+}

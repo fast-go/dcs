@@ -5,14 +5,14 @@ Etcd:
     - 127.0.0.1:2379
   Key: order.rpc
 
-Kq:
-  Name: kq
-  Brokers:
-    - 127.0.0.1:9092
-  Group: adhoc
-  Topic: kq
-  Offset: first
-  Consumers: 1
+#Kq:
+#  Name: kq
+#  Brokers:
+#    - 127.0.0.1:9092
+#  Group: adhoc
+#  Topic: kq
+#  Offset: first
+#  Consumers: 1
 
 DataSource: root:root@tcp(127.0.0.1:3306)/dcs?charset=utf8&parseTime=True&loc=Local
 
@@ -22,6 +22,20 @@ Cache:
 Redis:
   #  Key: rpc:auth:user     # 指定 Key 应为 hash 类型
   Host: localhost:6379
+
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+  NonBlock: true
+
+ProducerRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: producer.rpc
+  NonBlock: true
 
 ProductRpc:
   Etcd:

@@ -18,6 +18,8 @@ type (
 
 	Order interface {
 		Create(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
+		CreateRevert(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
+		CreateAsync(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
 	}
 
 	defaultOrder struct {
@@ -34,4 +36,14 @@ func NewOrder(cli zrpc.Client) Order {
 func (m *defaultOrder) Create(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error) {
 	client := order.NewOrderClient(m.cli.Conn())
 	return client.Create(ctx, in, opts...)
+}
+
+func (m *defaultOrder) CreateRevert(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.CreateRevert(ctx, in, opts...)
+}
+
+func (m *defaultOrder) CreateAsync(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error) {
+	client := order.NewOrderClient(m.cli.Conn())
+	return client.CreateAsync(ctx, in, opts...)
 }

@@ -9,6 +9,7 @@ import (
 type ServiceContext struct {
 	Config config.Config
 
+	SqlConn      sqlx.SqlConn
 	ProductModel model.ProductModel
 }
 
@@ -17,5 +18,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:       c,
 		ProductModel: model.NewProductModel(sqlConn, c.Cache),
+		SqlConn:      sqlConn,
 	}
 }

@@ -13,11 +13,15 @@ import (
 )
 
 type (
+	DecrStockReq  = product.DecrStockReq
+	DecrStockResp = product.DecrStockResp
 	DetailReq     = product.DetailReq
 	ProductDetail = product.ProductDetail
 
 	Product interface {
 		GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error)
+		DecrStock(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
+		DecrStockRevert(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
 	}
 
 	defaultProduct struct {
@@ -34,4 +38,14 @@ func NewProduct(cli zrpc.Client) Product {
 func (m *defaultProduct) GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error) {
 	client := product.NewProductClient(m.cli.Conn())
 	return client.GetProduct(ctx, in, opts...)
+}
+
+func (m *defaultProduct) DecrStock(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error) {
+	client := product.NewProductClient(m.cli.Conn())
+	return client.DecrStock(ctx, in, opts...)
+}
+
+func (m *defaultProduct) DecrStockRevert(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error) {
+	client := product.NewProductClient(m.cli.Conn())
+	return client.DecrStockRevert(ctx, in, opts...)
 }

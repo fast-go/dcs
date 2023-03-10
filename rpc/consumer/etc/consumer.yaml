@@ -2,11 +2,31 @@ Name: consumer.rpc
 ListenOn: 0.0.0.0:8082
 Etcd:
   Hosts:
-  - 127.0.0.1:2379
+    - 127.0.0.1:2379
   Key: consumer.rpc
 Log:
-  Mode: file
+  #  Mode: file
   #开发的时候设置plain方便查看错误信息，上线了删除，默认数据json
   Encoding: plain
 Amqp:
   Host: amqp://guest:guest@localhost:5672/
+
+MicroService:
+  Driver: 'dtm-driver-gozero' # 配置dtm使用go-zero的微服务协议
+  Target: 'etcd://localhost:2379/dtmservice' # 把dtm注册到etcd的这个地址
+  EndPoint: 'localhost:36790' # dtm的本地地址
+
+
+ProductRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: product.rpc
+  NonBlock: true
+
+OrderRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: order.rpc
+  NonBlock: true

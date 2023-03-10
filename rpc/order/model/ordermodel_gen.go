@@ -30,6 +30,10 @@ type (
 		FindOne(ctx context.Context, id int64) (*Order, error)
 		Update(ctx context.Context, data *Order) error
 		Delete(ctx context.Context, id int64) error
+
+		TxInsert(ctx context.Context, tx *sql.Tx, data *Order) (sql.Result, error)
+		TxUpdate(ctx context.Context, tx *sql.Tx, data *Order) error
+
 	}
 
 	defaultOrderModel struct {
@@ -74,7 +78,7 @@ func (m *defaultOrderModel) FindOne(ctx context.Context, id int64) (*Order, erro
 	case nil:
 		return &resp, nil
 	case sqlc.ErrNotFound:
-		return nil, ErrNotFound
+		return nil, sqlx.ErrNotFound
 	default:
 		return nil, err
 	}
@@ -98,6 +102,24 @@ func (m *defaultOrderModel) Update(ctx context.Context, data *Order) error {
 	return err
 }
 
+
+func (m *defaultOrderModel) TxInsert(ctx context.Context, tx *sql.Tx, data *Order) (sql.Result, error) {
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?)", m.table, orderRowsExpectAutoSet)
+	ret, err := tx.ExecContext(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num)
+
+	return ret, err
+}
+
+func (m *defaultOrderModel) TxUpdate(ctx context.Context, tx *sql.Tx, data *Order) error {
+	productIdKey := fmt.Sprintf("%s%v", cacheDcsOrderIdPrefix, data.Id)
+	_, err := m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, orderRowsWithPlaceHolder)
+		return tx.ExecContext(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num, data.Id)
+	}, productIdKey)
+	return err
+}
+
+
 func (m *defaultOrderModel) formatPrimary(primary any) string {
 	return fmt.Sprintf("%s%v", cacheDcsOrderIdPrefix, primary)
 }
@@ -110,3 +132,4 @@ func (m *defaultOrderModel) queryPrimary(ctx context.Context, conn sqlx.SqlConn,
 func (m *defaultOrderModel) tableName() string {
 	return m.table
 }
+

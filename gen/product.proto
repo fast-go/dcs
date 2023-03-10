@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package user;
+package product;
 
 option go_package = "./product";
 
@@ -15,6 +15,16 @@ message ProductDetail{
   int64 stock = 4;
 }
 
+// 减产品库存
+message DecrStockReq {
+  int64 id = 1;
+  int64 num = 2;
+}
+
+message DecrStockResp {
+}
 service product {
   rpc getProduct(DetailReq) returns(ProductDetail);
+  rpc decrStock(DecrStockReq) returns(DecrStockResp);
+  rpc decrStockRevert(DecrStockReq) returns(DecrStockResp);
 }

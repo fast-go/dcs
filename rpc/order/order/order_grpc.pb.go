@@ -23,6 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderClient interface {
 	Create(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
+	CreateRevert(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
+	CreateAsync(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error)
 }
 
 type orderClient struct {
@@ -42,11 +44,31 @@ func (c *orderClient) Create(ctx context.Context, in *CreateOrderReq, opts ...gr
 	return out, nil
 }
 
+func (c *orderClient) CreateRevert(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error) {
+	out := new(CreateOrderResp)
+	err := c.cc.Invoke(ctx, "/order.order/createRevert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *orderClient) CreateAsync(ctx context.Context, in *CreateOrderReq, opts ...grpc.CallOption) (*CreateOrderResp, error) {
+	out := new(CreateOrderResp)
+	err := c.cc.Invoke(ctx, "/order.order/createAsync", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServer is the server API for Order service.
 // All implementations must embed UnimplementedOrderServer
 // for forward compatibility
 type OrderServer interface {
 	Create(context.Context, *CreateOrderReq) (*CreateOrderResp, error)
+	CreateRevert(context.Context, *CreateOrderReq) (*CreateOrderResp, error)
+	CreateAsync(context.Context, *CreateOrderReq) (*CreateOrderResp, error)
 	mustEmbedUnimplementedOrderServer()
 }
 
@@ -56,6 +78,12 @@ type UnimplementedOrderServer struct {
 
 func (UnimplementedOrderServer) Create(context.Context, *CreateOrderReq) (*CreateOrderResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedOrderServer) CreateRevert(context.Context, *CreateOrderReq) (*CreateOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRevert not implemented")
+}
+func (UnimplementedOrderServer) CreateAsync(context.Context, *CreateOrderReq) (*CreateOrderResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAsync not implemented")
 }
 func (UnimplementedOrderServer) mustEmbedUnimplementedOrderServer() {}
 
@@ -88,6 +116,42 @@ func _Order_Create_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Order_CreateRevert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServer).CreateRevert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/order.order/createRevert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServer).CreateRevert(ctx, req.(*CreateOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Order_CreateAsync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOrderReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServer).CreateAsync(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/order.order/createAsync",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServer).CreateAsync(ctx, req.(*CreateOrderReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Order_ServiceDesc is the grpc.ServiceDesc for Order service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +162,14 @@ var Order_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "create",
 			Handler:    _Order_Create_Handler,
+		},
+		{
+			MethodName: "createRevert",
+			Handler:    _Order_CreateRevert_Handler,
+		},
+		{
+			MethodName: "createAsync",
+			Handler:    _Order_CreateAsync_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

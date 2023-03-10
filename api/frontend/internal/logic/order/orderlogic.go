@@ -26,7 +26,7 @@ func NewOrderLogic(ctx context.Context, svcCtx *svc.ServiceContext) OrderLogic {
 
 func (l *OrderLogic) Order(req *types.CreateOrderReq) (resp *types.CreateOrderResp, err error) {
 	// todo: add your logic here and delete this line
-	result, err := l.svcCtx.OrderRpc.Create(l.ctx, &order.CreateOrderReq{ProductId: req.ProductId})
+	result, err := l.svcCtx.OrderRpc.CreateAsync(l.ctx, &order.CreateOrderReq{ProductId: req.ProductId})
 
 	if err != nil {
 		return nil, err

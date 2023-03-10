@@ -2,11 +2,15 @@ package logic
 
 import (
 	"context"
+	"database/sql"
+	"dcs/gen/model"
 	"dcs/rpc/order/internal/svc"
 	"dcs/rpc/order/order"
 	"fmt"
-
+	"github.com/dtm-labs/client/dtmgrpc"
+	_ "github.com/dtm-labs/driver-gozero"
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/grpc/status"
 )
 
 type CreateLogic struct {
@@ -24,9 +28,39 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 }
 
 func (l *CreateLogic) Create(in *order.CreateOrderReq) (*order.CreateOrderResp, error) {
-	// todo: add your logic here and delete this line
+	// 获取 RawDB
+	db, err := l.svcCtx.SqlConn.RawDB()
+	if err != nil {
+		return nil, status.Error(500, err.Error())
+	}
 
-	fmt.Println(l.svcCtx.KqCreateOrderPusherService.Publish("test"))
+	// 获取子事务屏障对象
+	barrier, err := dtmgrpc.BarrierFromGrpc(l.ctx)
+	if err != nil {
+		return nil, status.Error(500, err.Error())
+	}
+	// 开启子事务屏障
+	if err := barrier.CallWithDB(db, func(tx *sql.Tx) error {
+		// 查询用户是否存在
+		//_, err := l.svcCtx.UserRpc.GetUser(l.ctx,&user.IdReq{Id: 1})
+		//if err != nil {
+		//	return fmt.Errorf("用户不存在")
+		//}
+		newOrder := model.Order{
+			Uid:       1,
+			ProductId: in.ProductId,
+			Status:    0,
+		}
+		// create order
+		_, err = l.svcCtx.OrderModel.TxInsert(l.ctx, tx, &newOrder)
+		if err != nil {
+			return fmt.Errorf("create order error")
+		}
+		return nil
+	}); err != nil {
+		return nil, status.Error(500, err.Error())
+	}
+
 	return &order.CreateOrderResp{}, nil
 
 	// 查询产品是否存在

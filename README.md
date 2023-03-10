@@ -1,5 +1,8 @@
 # dcs
 
+参考文档 https://juejin.cn/post/7051205679217901599
+
+
 docker构建rpc应用
 ```
 docker build -t rpcservice-user:v1 -f ./rpc/user/Dockerfile .
@@ -113,4 +116,14 @@ docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elas
 ```
 docker run -d --name kabana -v ./config/:/usr/share/kibana/config -p 5601:5601 kibana:7.2.0
 ```
+kafka 创建 topic 
+参考 https://blog.csdn.net/weixin_47019045/article/details/125496689
+```
+kafka-topics.sh --create --zookeeper 172.17.0.2:2181 --replication-factor 1 --partitions 1 --topic kq
+```
 
+分布式事务
+
+```jsunicoderegexp
+docker run -itd  --name dtm -p 36789:36789 -p 36790:36790  yedf/dtm:latest
+```
