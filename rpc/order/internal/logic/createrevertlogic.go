@@ -35,7 +35,6 @@ func (l *CreateRevertLogic) CreateRevert(in *order.CreateOrderReq) (*order.Creat
 	if err != nil {
 		return nil, status.Error(500, err.Error())
 	}
-
 	// 获取子事务屏障对象
 	barrier, err := dtmgrpc.BarrierFromGrpc(l.ctx)
 	if err != nil {
@@ -43,14 +42,11 @@ func (l *CreateRevertLogic) CreateRevert(in *order.CreateOrderReq) (*order.Creat
 	}
 	// 开启子事务屏障
 	if err := barrier.CallWithDB(db, func(tx *sql.Tx) error {
-		// 查询用户是否存在
-		//_, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.UserInfoRequest{
-		//	Id: in.Uid,
-		//})
-		//if err != nil {
-		//	return fmt.Errorf("用户不存在")
-		// 查询用户最新创建的订单
-		resOrder, err := l.svcCtx.OrderModel.FindOne(l.ctx, in.ProductId)
+		fmt.Println(666)
+		// 查询订单
+		resOrder, err := l.svcCtx.OrderModel.FindOneByOrderNum(l.ctx, in.OrderNum)
+
+		fmt.Println("resOrder err :", err)
 		if err != nil {
 			return fmt.Errorf("no order record")
 		}
@@ -58,6 +54,7 @@ func (l *CreateRevertLogic) CreateRevert(in *order.CreateOrderReq) (*order.Creat
 		resOrder.Status = 9
 		err = l.svcCtx.OrderModel.TxUpdate(l.ctx, tx, resOrder)
 		if err != nil {
+			fmt.Println(err)
 			return fmt.Errorf("update order status fail")
 		}
 		return nil

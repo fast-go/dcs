@@ -8,6 +8,7 @@ import (
 	"dcs/rpc/order/orderclient"
 	"dcs/rpc/product/product"
 	"dcs/rpc/product/productclient"
+	"dcs/util"
 	"encoding/json"
 	"fmt"
 	"github.com/dtm-labs/client/dtmgrpc"
@@ -49,11 +50,10 @@ type CreateOrder struct {
 func (r *CreateOrderTopic) Consume(body []byte) {
 	//todo 处理具体要执行的事件
 	log.Printf("[%s:%s] Received a message: %s", r.TopicName(), r.topicId, body)
-
 	var (
 		co  CreateOrder
 		err error
-		//pd  *product.ProductDetail
+		pd  *product.ProductDetail
 		//createOrderResp *order.CreateOrderResp
 		//decrStockRes    *product.DecrStockResp
 	)
@@ -62,68 +62,40 @@ func (r *CreateOrderTopic) Consume(body []byte) {
 		return
 	}
 
-	//pd, err = r.Option.ProductRpc.GetProduct(r.Option.ctx, &product.DetailReq{Id: co.ProductId})
-	//
-	//fmt.Println(err)
-	//
-	//if err != nil {
-	//	logx.Errorf(fmt.Sprintf("find product err: %s", err))
-	//	return
-	//}
-	////
-	////fmt.Println(11)
-	////
-	//if pd.Stock <= 0 {
-	//	fmt.Println("no stock")
-	//	return
-	//}
-	//
-	//fmt.Println(22)
-	//
-	//// dtm 服务的 etcd 注册地址
+	pd, err = r.Option.ProductRpc.GetProduct(r.Option.ctx, &product.DetailReq{Id: co.ProductId})
+
+	if err != nil {
+		logx.Errorf(fmt.Sprintf("find product err: %s", err))
+		return
+	}
+	if pd.Stock <= 0 {
+		logx.Errorf("no stock")
+		return
+	}
+	// dtm 服务的 etcd 注册地址
 	var dtmServer = "etcd://localhost:2379/dtmservice"
-	//var dtmServer = "http://localhost:36790/api/dtmsvr"
-
 	productRpcService, err := r.Option.Config.ProductRpc.BuildTarget()
-
-	//if err != nil {
-	//	fmt.Println(err)
-	//	return
-	//}
+	orderNum := util.GenerateOrderNum()
 	// 创建一个gid
 	gid := dtmgrpc.MustGenGid(dtmServer)
-	////
-	//fmt.Println(gid)
-	//fmt.Println(productRpcService)
-	//
-	//return
 	orderRpcService, _ := r.Option.Config.OrderRpc.BuildTarget()
-
-	//orderRpcService = "http://127.0.0.1:9090"
-
-	//fmt.Println("======")
-	fmt.Println(orderRpcService)
-	//fmt.Println("======")
-	//
-	//var dtmServer = "http://localhost:36789/api/dtmsvr"
-
-	//// 创建一个saga协议的事务
+	// 创建一个saga协议的事务
 	saga := dtmgrpc.NewSagaGrpc(dtmServer, gid).
-		Add(orderRpcService+"/order.order/create", orderRpcService+"/order.order/createRevert", &order.CreateOrderReq{ProductId: co.ProductId}).
+		Add(orderRpcService+"/order.order/create", orderRpcService+"/order.order/createRevert", &order.CreateOrderReq{
+			ProductId: co.ProductId,
+			OrderNum:  orderNum,
+		}).
 		Add(productRpcService+"/product.product/decrStock", productRpcService+"/product.product/decrStockRevert", &product.DecrStockReq{
 			Id:  co.ProductId,
 			Num: 1,
 		})
-
 	// 事务提交
 	err = saga.Submit()
 	if err != nil {
 		logx.Error(err)
 		return
 	}
-
 	if err != nil {
 		return
 	}
-
 }

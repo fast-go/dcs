@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 	"github.com/dtm-labs/client/dtmgrpc"
 	_ "github.com/dtm-labs/driver-gozero"
 	"google.golang.org/grpc/codes"
@@ -31,15 +30,11 @@ func NewDecrStockLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DecrSto
 }
 
 func (l *DecrStockLogic) DecrStock(in *product.DecrStockReq) (*product.DecrStockResp, error) {
-	// todo: add your logic here and delete this line
 	// 获取 RawDB
 	db, err := l.svcCtx.SqlConn.RawDB()
-
 	if err != nil {
 		return nil, status.Error(500, err.Error())
 	}
-
-	fmt.Println(1111)
 	// 获取子事务屏障对象
 	barrier, err := dtmgrpc.BarrierFromGrpc(l.ctx)
 	if err != nil {
@@ -52,12 +47,10 @@ func (l *DecrStockLogic) DecrStock(in *product.DecrStockReq) (*product.DecrStock
 		if err != nil {
 			return err
 		}
-
 		affected, err := result.RowsAffected()
 		// 库存不足，返回子事务失败
 		if err == nil && affected == 0 {
-			//return dtmcli.ErrFailure
-			return errors.New("error ")
+			return errors.New("error")
 		}
 
 		return err

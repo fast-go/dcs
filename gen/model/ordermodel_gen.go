@@ -28,12 +28,12 @@ type (
 	orderModel interface {
 		Insert(ctx context.Context, data *Order) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*Order, error)
+		FindOneByOrderNum(ctx context.Context, orderNum string) (*Order, error)
 		Update(ctx context.Context, data *Order) error
 		Delete(ctx context.Context, id int64) error
 
 		TxInsert(ctx context.Context, tx *sql.Tx, data *Order) (sql.Result, error)
 		TxUpdate(ctx context.Context, tx *sql.Tx, data *Order) error
-
 	}
 
 	defaultOrderModel struct {
@@ -44,6 +44,7 @@ type (
 	Order struct {
 		Id          int64  `db:"id"`
 		ProductName string `db:"product_name"`
+		OrderNum    string `db:"order_num"`
 		ProductId   int64  `db:"product_id"`
 		Uid         int64  `db:"uid"`
 		Status      int64  `db:"status"`
@@ -84,11 +85,28 @@ func (m *defaultOrderModel) FindOne(ctx context.Context, id int64) (*Order, erro
 	}
 }
 
+func (m *defaultOrderModel) FindOneByOrderNum(ctx context.Context, orderNum string) (*Order, error) {
+	dcsOrderIdKey := fmt.Sprintf("%s%v", cacheDcsOrderIdPrefix, orderNum)
+	var resp Order
+	err := m.QueryRowCtx(ctx, &resp, dcsOrderIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
+		query := fmt.Sprintf("select %s from %s where `order_num` = ? limit 1", orderRows, m.table)
+		return conn.QueryRowCtx(ctx, v, query, orderNum)
+	})
+	switch err {
+	case nil:
+		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
 func (m *defaultOrderModel) Insert(ctx context.Context, data *Order) (sql.Result, error) {
 	dcsOrderIdKey := fmt.Sprintf("%s%v", cacheDcsOrderIdPrefix, data.Id)
 	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
-		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?)", m.table, orderRowsExpectAutoSet)
-		return conn.ExecCtx(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num)
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?,?)", m.table, orderRowsExpectAutoSet)
+		return conn.ExecCtx(ctx, query, data.ProductName,data.OrderNum, data.ProductId, data.Uid, data.Status, data.Num)
 	}, dcsOrderIdKey)
 	return ret, err
 }
@@ -103,9 +121,8 @@ func (m *defaultOrderModel) Update(ctx context.Context, data *Order) error {
 }
 
 func (m *defaultOrderModel) TxInsert(ctx context.Context, tx *sql.Tx, data *Order) (sql.Result, error) {
-	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?)", m.table, orderRowsExpectAutoSet)
-	ret, err := tx.ExecContext(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num)
-
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?,?)", m.table, orderRowsExpectAutoSet)
+	ret, err := tx.ExecContext(ctx, query, data.ProductName,data.OrderNum, data.ProductId, data.Uid, data.Status, data.Num)
 	return ret, err
 }
 
@@ -113,7 +130,7 @@ func (m *defaultOrderModel) TxUpdate(ctx context.Context, tx *sql.Tx, data *Orde
 	productIdKey := fmt.Sprintf("%s%v", cacheDcsOrderIdPrefix, data.Id)
 	_, err := m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, orderRowsWithPlaceHolder)
-		return tx.ExecContext(ctx, query, data.ProductName, data.ProductId, data.Uid, data.Status, data.Num, data.Id)
+		return tx.ExecContext(ctx, query, data.ProductName,data.OrderNum, data.ProductId, data.Uid, data.Status, data.Num, data.Id)
 	}, productIdKey)
 	return err
 }

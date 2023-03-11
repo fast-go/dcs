@@ -26,7 +26,3 @@ func ProductHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 		}
 	}
 }
-
-
-
-

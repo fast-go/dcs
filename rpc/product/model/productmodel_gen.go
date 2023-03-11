@@ -65,7 +65,6 @@ func (m *defaultProductModel) Delete(ctx context.Context, id int64) error {
 
 func (m *defaultProductModel) FindOne(ctx context.Context, id int64) (*Product, error) {
 	dcsProductIdKey := fmt.Sprintf("%s%v", cacheDcsProductIdPrefix, id)
-	fmt.Println(dcsProductIdKey)
 	var resp Product
 	err := m.QueryRowCtx(ctx, &resp, dcsProductIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
 		query := fmt.Sprintf("select %s from %s where `id` = ? limit 1", productRows, m.table)
@@ -101,7 +100,6 @@ func (m *defaultProductModel) Update(ctx context.Context, data *Product) error {
 
 func (m *defaultProductModel) TxAdjustStock(ctx context.Context, tx *sql.Tx, id int64, delta int) (sql.Result, error) {
 	productIdKey := fmt.Sprintf("%s%v", cacheDcsProductIdPrefix, id)
-	fmt.Println(productIdKey)
 	return m.Exec(func(conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set stock=stock+? where id=? and stock >= -?", m.table)
 		return tx.ExecContext(ctx, query, delta, id, delta)

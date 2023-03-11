@@ -6,6 +6,7 @@ option go_package = "./order";
 
 message CreateOrderReq{
   int64 productId = 1;
+  string orderNum = 2;
 }
 
 message CreateOrderResp{
@@ -19,4 +20,6 @@ message CreateOrderResp{
 
 service order {
   rpc create(CreateOrderReq) returns(CreateOrderResp);
+  rpc createRevert(CreateOrderReq) returns(CreateOrderResp);
+  rpc createAsync(CreateOrderReq) returns(CreateOrderResp);
 }
