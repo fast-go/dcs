@@ -45,6 +45,17 @@ type ProductGetDetailResp struct {
 	Stock int64  `json:"stock"`
 }
 
+type ProductFindPageReq struct {
+	Limit   int64  `json:"limit"`
+	Page    int64  `json:"page"`
+	Keyword string `json:"keyword"`
+}
+
+type ProductFindPageResp struct {
+	List  []ProductGetDetailResp `json:"list"`
+	Total int64                  `json:"total"`
+}
+
 type CreateOrderReq struct {
 	ProductId int64 `json:"productId"`
 	Num       int64 `json:"num"`

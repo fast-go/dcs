@@ -1,8 +1,15 @@
 Name: product.rpc
-ListenOn: 0.0.0.0:8080
+Mode: dev
+ListenOn: 0.0.0.0:8083
+
+Log:
+  #  Mode: file
+  #开发的时候设置plain方便查看错误信息，上线了删除，默认数据json
+  Encoding: plain
+
 Etcd:
   Hosts:
-  - 127.0.0.1:2379
+    - 127.0.0.1:2379
   Key: product.rpc
 
 DataSource: root:root@tcp(127.0.0.1:3306)/dcs?charset=utf8&parseTime=True&loc=Local
@@ -10,6 +17,10 @@ DataSource: root:root@tcp(127.0.0.1:3306)/dcs?charset=utf8&parseTime=True&loc=Lo
 Cache:
   - Host: localhost:6379
 
+ElasticSearch:
+  Hosts:
+    - http://127.0.0.1:9200
+  Index: product
 Redis:
   #  Key: rpc:auth:user     # 指定 Key 应为 hash 类型
   Host: localhost:6379

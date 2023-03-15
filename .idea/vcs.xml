@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/deploy/dtm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/deploy/elasticsearch-head" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/deploy/go-mysql-elasticsearch" vcs="Git" />
   </component>
 </project>

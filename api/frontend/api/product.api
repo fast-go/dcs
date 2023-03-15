@@ -9,6 +9,17 @@ type (
         Price int64 `json:"price"`
         Stock int64 `json:"stock"`
     }
+
+    ProductFindPageReq {
+        Limit int64 `json:"limit"`
+        Page int64 `json:"page"`
+        Keyword string `json:"keyword"`
+    }
+
+    ProductFindPageResp {
+        list []ProductGetDetailResp `json:"list"`
+        total int64 `json:"total"`
+    }
 )
 
 @server(
@@ -18,4 +29,6 @@ type (
 service frontend-api {
     @handler product
     post /product/get_detail (ProductGetDetailReq) returns (ProductGetDetailResp)
+    @handler findPage
+    post /product/find_page (ProductFindPageReq) returns (ProductFindPageResp)
 }

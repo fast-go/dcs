@@ -6,6 +6,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"github.com/Masterminds/squirrel"
 	"strings"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
@@ -26,6 +27,7 @@ var (
 
 type (
 	productModel interface {
+		RowBuilder() squirrel.SelectBuilder
 		Insert(ctx context.Context, data *Product) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*Product, error)
 		Update(ctx context.Context, data *Product) error
@@ -67,7 +69,10 @@ func (m *defaultProductModel) FindOne(ctx context.Context, id int64) (*Product, 
 	dcsProductIdKey := fmt.Sprintf("%s%v", cacheDcsProductIdPrefix, id)
 	var resp Product
 	err := m.QueryRowCtx(ctx, &resp, dcsProductIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
-		query := fmt.Sprintf("select %s from %s where `id` = ? limit 1", productRows, m.table)
+		query, _, err := m.RowBuilder().Where(squirrel.Eq{"id": id}).ToSql()
+		if err != nil {
+			return err
+		}
 		return conn.QueryRowCtx(ctx, v, query, id)
 	})
 	switch err {
@@ -114,6 +119,12 @@ func (m *defaultProductModel) queryPrimary(ctx context.Context, conn sqlx.SqlCon
 	query := fmt.Sprintf("select %s from %s where `id` = ? limit 1", productRows, m.table)
 	return conn.QueryRowCtx(ctx, v, query, primary)
 }
+
+// export logic
+func (m *defaultProductModel) RowBuilder() squirrel.SelectBuilder {
+	return squirrel.Select(productRows).From(m.table)
+}
+
 
 func (m *defaultProductModel) tableName() string {
 	return m.table
