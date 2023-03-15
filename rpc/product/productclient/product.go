@@ -16,10 +16,13 @@ type (
 	DecrStockReq  = product.DecrStockReq
 	DecrStockResp = product.DecrStockResp
 	DetailReq     = product.DetailReq
+	FindPageReq   = product.FindPageReq
+	FindPageRes   = product.FindPageRes
 	ProductDetail = product.ProductDetail
 
 	Product interface {
 		GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error)
+		FindPage(ctx context.Context, in *FindPageReq, opts ...grpc.CallOption) (*FindPageRes, error)
 		DecrStock(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
 		DecrStockRevert(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
 	}
@@ -38,6 +41,11 @@ func NewProduct(cli zrpc.Client) Product {
 func (m *defaultProduct) GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error) {
 	client := product.NewProductClient(m.cli.Conn())
 	return client.GetProduct(ctx, in, opts...)
+}
+
+func (m *defaultProduct) FindPage(ctx context.Context, in *FindPageReq, opts ...grpc.CallOption) (*FindPageRes, error) {
+	client := product.NewProductClient(m.cli.Conn())
+	return client.FindPage(ctx, in, opts...)
 }
 
 func (m *defaultProduct) DecrStock(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error) {

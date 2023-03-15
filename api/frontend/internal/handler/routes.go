@@ -68,6 +68,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/product/get_detail",
 				Handler: product.ProductHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/product/find_page",
+				Handler: product.FindPageHandler(serverCtx),
+			},
 		},
 	)
 

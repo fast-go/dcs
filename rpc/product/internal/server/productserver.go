@@ -27,6 +27,11 @@ func (s *ProductServer) GetProduct(ctx context.Context, in *product.DetailReq) (
 	return l.GetProduct(in)
 }
 
+func (s *ProductServer) FindPage(ctx context.Context, in *product.FindPageReq) (*product.FindPageRes, error) {
+	l := logic.NewFindPageLogic(ctx, s.svcCtx)
+	return l.FindPage(in)
+}
+
 func (s *ProductServer) DecrStock(ctx context.Context, in *product.DecrStockReq) (*product.DecrStockResp, error) {
 	l := logic.NewDecrStockLogic(ctx, s.svcCtx)
 	return l.DecrStock(in)

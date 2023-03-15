@@ -1,3 +1,8 @@
+info(
+    title: "订单服务"
+    desc: "订单服务"
+)
+
 type (
     CreateOrderReq {
         ProductId int64 `json:"productId"`
@@ -18,6 +23,7 @@ type (
 )
 
 service frontend-api {
+    @doc "创建订单"
     @handler order
     post /order/create (CreateOrderReq) returns (CreateOrderResp)
 }

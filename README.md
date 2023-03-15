@@ -107,7 +107,25 @@ Telemetry:
 参考 `https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html`
 
 ```
-docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    
+    通过直接映射的目录的方式(有点问题)
+    [//]: # (docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --privileged=true -v $PWD/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml docker.elastic.co/elasticsearch/elasticsearch:8.6.0)
+    
+    将容器中的配置文件拷贝到宿主机中
+    docker cp es:/usr/share/elasticsearch/config/elasticsearch.yml ./elasticsearch.yml
+    
+    
+    修改配置文件
+    xpack.security.enabled: false
+    xpack.security.http.ssl:
+      enabled: false
+      
+    将配置文件上传到容器中  
+    docker cp ./elasticsearch.yml es:/usr/share/elasticsearch/config/elasticsearch.yml
+    
+    重启容器
+    docker restart es
 ```
 
 安装 kabana 
@@ -125,8 +143,41 @@ kafka-topics.sh --create --zookeeper 172.17.0.2:2181 --replication-factor 1 --pa
 分布式事务
 
 
-```jsunicoderegexp
+```
 go run main.go -c conf.yml
 
 docker run -itd  --name dtm -p 36789:36789 -p 36790:36790  yedf/dtm:latest
 ```
+
+
+es可视化工具安装
+elasticsearch-head的使用
+```
+npm install
+npm run start
+```
+在浏览器访问http://localhost:9100
+
+
+使用工具`go-mysql-elasticsearch`将mysql同步数据到es中
+
+参考 https://cloud.tencent.com/developer/article/1469849
+
+启动 `go-mysql-elasticsearch`
+
+```
+./bin/go-mysql-elasticsearch -config=./etc/river.toml
+```
+
+
+es查询语句
+参考 https://blog.csdn.net/chenguoao1999/article/details/122202031
+
+
+
+docker system prune
+删除docker磁盘空间
+
+
+
+

@@ -27,6 +27,7 @@ func (l *GetProductLogic) GetProduct(in *product.DetailReq) (*product.ProductDet
 	if err != nil {
 		return nil, err
 	}
+
 	return &product.ProductDetail{
 		Id:    result.Id,
 		Name:  result.Name,

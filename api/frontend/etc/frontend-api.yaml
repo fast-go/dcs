@@ -1,4 +1,5 @@
 Name: frontend-api
+Mode: dev  #开发模式
 Host: 0.0.0.0
 Port: 8890
 Log:

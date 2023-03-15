@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProductClient interface {
 	GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error)
+	FindPage(ctx context.Context, in *FindPageReq, opts ...grpc.CallOption) (*FindPageRes, error)
 	DecrStock(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
 	DecrStockRevert(ctx context.Context, in *DecrStockReq, opts ...grpc.CallOption) (*DecrStockResp, error)
 }
@@ -38,6 +39,15 @@ func NewProductClient(cc grpc.ClientConnInterface) ProductClient {
 func (c *productClient) GetProduct(ctx context.Context, in *DetailReq, opts ...grpc.CallOption) (*ProductDetail, error) {
 	out := new(ProductDetail)
 	err := c.cc.Invoke(ctx, "/product.product/getProduct", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productClient) FindPage(ctx context.Context, in *FindPageReq, opts ...grpc.CallOption) (*FindPageRes, error) {
+	out := new(FindPageRes)
+	err := c.cc.Invoke(ctx, "/product.product/findPage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,6 +77,7 @@ func (c *productClient) DecrStockRevert(ctx context.Context, in *DecrStockReq, o
 // for forward compatibility
 type ProductServer interface {
 	GetProduct(context.Context, *DetailReq) (*ProductDetail, error)
+	FindPage(context.Context, *FindPageReq) (*FindPageRes, error)
 	DecrStock(context.Context, *DecrStockReq) (*DecrStockResp, error)
 	DecrStockRevert(context.Context, *DecrStockReq) (*DecrStockResp, error)
 	mustEmbedUnimplementedProductServer()
@@ -78,6 +89,9 @@ type UnimplementedProductServer struct {
 
 func (UnimplementedProductServer) GetProduct(context.Context, *DetailReq) (*ProductDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProduct not implemented")
+}
+func (UnimplementedProductServer) FindPage(context.Context, *FindPageReq) (*FindPageRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPage not implemented")
 }
 func (UnimplementedProductServer) DecrStock(context.Context, *DecrStockReq) (*DecrStockResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecrStock not implemented")
@@ -112,6 +126,24 @@ func _Product_GetProduct_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServer).GetProduct(ctx, req.(*DetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Product_FindPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindPageReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServer).FindPage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/product.product/findPage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServer).FindPage(ctx, req.(*FindPageReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -162,6 +194,10 @@ var Product_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "getProduct",
 			Handler:    _Product_GetProduct_Handler,
+		},
+		{
+			MethodName: "findPage",
+			Handler:    _Product_FindPage_Handler,
 		},
 		{
 			MethodName: "decrStock",

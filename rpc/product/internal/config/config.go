@@ -10,4 +10,9 @@ type Config struct {
 	Cache cache.CacheConf
 
 	DataSource string
+
+	ElasticSearch struct {
+		Hosts []string
+		Index string
+	}
 }
