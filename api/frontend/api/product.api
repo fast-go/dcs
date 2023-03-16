@@ -14,11 +14,14 @@ type (
         Limit int64 `json:"limit"`
         Page int64 `json:"page"`
         Keyword string `json:"keyword"`
+        Cursor string `json:"cursor"`
     }
 
     ProductFindPageResp {
         list []ProductGetDetailResp `json:"list"`
         total int64 `json:"total"`
+        cursor string `json:"cursor"`
+        hasMore bool  `json:"hasMore"`
     }
 )
 

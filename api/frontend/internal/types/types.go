@@ -49,11 +49,14 @@ type ProductFindPageReq struct {
 	Limit   int64  `json:"limit"`
 	Page    int64  `json:"page"`
 	Keyword string `json:"keyword"`
+	Cursor  string `json:"cursor"`
 }
 
 type ProductFindPageResp struct {
-	List  []ProductGetDetailResp `json:"list"`
-	Total int64                  `json:"total"`
+	List    []ProductGetDetailResp `json:"list"`
+	Total   int64                  `json:"total"`
+	Cursor  string                 `json:"cursor"`
+	HasMore bool                   `json:"hasMore"`
 }
 
 type CreateOrderReq struct {
