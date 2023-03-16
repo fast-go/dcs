@@ -30,6 +30,7 @@ func (l *FindPageLogic) FindPage(req *types.ProductFindPageReq) (resp *types.Pro
 		Limit:   req.Limit,
 		Page:    req.Page,
 		Keyword: req.Keyword,
+		Cursor:  req.Cursor,
 	})
 
 	var d types.ProductFindPageResp
@@ -44,6 +45,8 @@ func (l *FindPageLogic) FindPage(req *types.ProductFindPageReq) (resp *types.Pro
 	}
 
 	d.Total = res.Total
+	d.Cursor = res.Cursor
+	d.HasMore = res.HasMore
 
 	return &d, nil
 }
