@@ -19,7 +19,9 @@ type (
 )
 
 @server(
+    jwt: Auth
     group: order
+    middleware: PeriodLimitMiddleware
 )
 
 service frontend-api {

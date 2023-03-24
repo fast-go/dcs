@@ -7,7 +7,6 @@ import (
 	"dcs/rpc/producer/producer"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strings"
 	"time"
 
@@ -66,10 +65,7 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginReply, err err
 		return nil, err
 	}
 	// ---end---
-
 	body, _ := json.Marshal(userInfo)
-
-	logx.Error("用户登录成功")
 
 	//登录成功发送事件到消息队列中
 	_, err = l.svcCtx.ProducerRpc.Publish(l.ctx, &producer.Request{
@@ -78,7 +74,7 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginReply, err err
 	})
 
 	if err != nil {
-		fmt.Printf("l.svcCtx.ProducerRpc.Publish err:%s", err)
+		logx.Error("l.svcCtx.ProducerRpc.Publish err:%s", err)
 	}
 
 	return &types.LoginReply{

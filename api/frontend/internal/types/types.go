@@ -15,6 +15,22 @@ type LoginReply struct {
 	RefreshAfter int64  `json:"refreshAfter"`
 }
 
+type RegisterReq struct {
+	Username       string `json:"username"`
+	Phone          string `json:"phone,optional"`
+	Email          string `json:"email,optional"`
+	Password       string `json:"password"`
+	ConfimPassword string `json:"confimPassword"`
+}
+
+type RegisterResp struct {
+	Name         string `json:"name"`
+	Gender       string `json:"gender"`
+	AccessToken  string `json:"accessToken"`
+	AccessExpire int64  `json:"accessExpire"`
+	RefreshAfter int64  `json:"refreshAfter"`
+}
+
 type IdentificationReq struct {
 	Authorization string `json:"id"`
 }

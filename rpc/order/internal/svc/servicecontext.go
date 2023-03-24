@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"dcs/gen/model"
 	"dcs/rpc/order/internal/config"
+	"dcs/rpc/order/model"
 	"dcs/rpc/producer/producerclient"
 	"dcs/rpc/product/productclient"
 	"dcs/rpc/user/userclient"

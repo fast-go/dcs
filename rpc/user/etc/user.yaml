@@ -12,6 +12,8 @@ Etcd:
 
 #Auth: true               # 是否开启 Auth 验证
 #StrictControl: true      # 是否开启严格模式
+Cache:
+  - Host: localhost:6379
 
 #链路追踪
 Telemetry:
@@ -24,8 +26,7 @@ JWT:
   AccessSecret: "11111111"
   AccessExpire: 7200
 
-Mysql:
-  Dns: root:root@tcp(127.0.0.1:3306)/dcs?charset=utf8&parseTime=True&loc=Local
+DataSource: root:root@tcp(127.0.0.1:3306)/dcs?charset=utf8&parseTime=True&loc=Local
 
 Redis:
 #  Key: rpc:auth:user     # 指定 Key 应为 hash 类型

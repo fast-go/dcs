@@ -34,7 +34,10 @@ func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
 		ip = localIp[0]
 	}
 
-	u := l.svcCtx.Dao.User.FindOneById(in.Id)
+	u, err := l.svcCtx.UserModel.FindOne(l.ctx, in.Id)
+	if err != nil {
+		return nil, err
+	}
 
 	return &user.UserInfoReply{
 		Id:     in.GetId(),

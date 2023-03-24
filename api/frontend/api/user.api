@@ -12,6 +12,22 @@ type (
         AccessExpire int64 `json:"accessExpire"`
         RefreshAfter int64 `json:"refreshAfter"`
     }
+
+    RegisterReq {
+        Username string `json:"username"`
+        Phone string `json:"phone,optional"`
+        Email string `json:"email,optional"`
+        Password string `json:"password"`
+        ConfimPassword string `json:"confimPassword"`
+    }
+
+    RegisterResp {
+        Name string `json:"name"`
+        Gender string `json:"gender"`
+        AccessToken string `json:"accessToken"`
+        AccessExpire int64 `json:"accessExpire"`
+        RefreshAfter int64 `json:"refreshAfter"`
+    }
 )
 
 @server(
@@ -19,11 +35,14 @@ type (
 )
 
 service frontend-api {
-    @doc (
+    @doc(
         summary: "api接口"
     )
     @handler Login
     post /base/login (LoginReq) returns (LoginReply)
+
+    @handler Register
+    post /base/register (RegisterReq) returns (RegisterResp)
 
     @handler Logout
     post /base/logout
@@ -39,7 +58,6 @@ type (
         Name string `json:"name"`
         Gender string `json:"gender"`
     }
-
 )
 
 @server(
@@ -50,6 +68,4 @@ type (
 service frontend-api {
     @handler userinfo
     post /user/get_info (IdentificationReq) returns (UserinfoResp)
-
-
 }
